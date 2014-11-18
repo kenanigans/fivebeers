@@ -8,4 +8,5 @@ Feature list:
 - ajax dropdown archives
 - live search
 - ajax comments
+- unlimited sidebars
 - custom skin for html5 video and audio + playlist support
