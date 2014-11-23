@@ -37,6 +37,24 @@ function twentyfifteen_more_widgets_init() {
 add_action( 'widgets_init', 'twentyfifteen_more_widgets_init' );
 
 /**
+ * Add Sidebar link to the Admin Toolbar
+ *
+*/
+function add_sidebars_to_toolbar( $wp_admin_bar ) {
+
+    $args = array(
+        'id' => 'sidebars',
+        'title' => 'Sidebars',
+        'parent' => 'appearance',
+	'href' => admin_url('themes.php?page=fivebeers-sidebars')
+    );
+
+    $wp_admin_bar->add_node($args);
+}
+
+add_action( 'admin_bar_menu', 'add_sidebars_to_toolbar', 999 );
+
+/**
  * Add Sidebars page to the appearance section
  *
 */
