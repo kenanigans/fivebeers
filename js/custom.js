@@ -41,6 +41,9 @@ jQuery(document).ready(function($) {
                 alert(request.responseText);
             },
             success: function(data) {
+		// remove infinite on alphabet load
+		$.ias().unbind();
+
                 $('#main').empty().html(data);
             }
         });
