@@ -1,0 +1,1397 @@
+/*  Table of Contents 
+01. ICON FONT AND CSS3 TRANSITIONS
+02. MOBILE/TABLET STYLES
+03. PLAYER ICON COLORS
+04. PLAYER CONTAINERS 
+05. PLAYER BUTTONS
+06. PLAYER TIMER
+07. PLAYER VOLUME
+08. VIDEO STYLES
+09. PLAYLIST STYLES
+10. PLAYER SMALL SIZE
+11. PLAYER DROP SHADOW
+12. FANCY SKIN 
+13. MINIMAL LIGHT SKIN
+14. DARK SKIN
+15. MINIMAL DARK SKIN
+*/
+
+
+
+/*
+=============================================== 01. ICON FONT AND CSS3 TRANSITIONS ===============================================
+*/
+@import url('../genericons/genericons.css');
+.progression-skin .mejs-overlay-button:before { -webkit-font-smoothing: antialiased; content: '\f452'; display: inline-block; font: normal 32px/1.125 Genericons; position: absolute; top: 1px; left: 10px;}
+.progression-skin .mejs-controls .mejs-button button { -webkit-font-smoothing: antialiased; background: none; color: #fff; display: inline-block; font: normal 16px/1 Genericons; }
+.progression-skin .mejs-controls .mejs-button button:focus { outline: none; }
+.progression-skin .mejs-playpause-button.mejs-play button:before { content: '\f452'; }
+.progression-skin .mejs-playpause-button.mejs-pause button:before { content: '\f448'; }
+.progression-skin .mejs-playlist-button button:before { content: "\f419";  }
+.progression-skin .mejs-volume-button.mejs-mute button:before { content: '\f109'; font-size: 20px; position: absolute; top: -2px; left: 0; }
+.progression-skin .mejs-volume-button.mejs-unmute button:before { content: '\f109'; left: 0; position: absolute; top: 0; }
+.progression-skin .mejs-fullscreen-button button:before { content: '\f474'; }
+.progression-skin .mejs-fullscreen-button.mejs-unfullscreen button:before { content: '\f406'; }
+.progression-skin .wp-playlist .wp-playlist-next, .progression-skin .wp-playlist .wp-playlist-prev { cursor:pointer; -webkit-font-smoothing: antialiased; font: normal 16px/1 Genericons; display:block; width:40px; height:40px; position:relative; }
+.progression-skin .wp-playlist .wp-playlist-next:before { content: '\f458'; }
+.progression-skin .wp-playlist .wp-playlist-prev:before { content: '\f459'; }
+
+/* CSS TRANSITIONS */
+body .progression-skin button, .mejs-overlay-button, .wp-playlist .wp-playlist-next, .wp-playlist .wp-playlist-prev,
+body .progression-skin  .wp-playlist-item {
+	-webkit-transition-duration: 150ms; -webkit-transition-property: color, background, opacity; -webkit-transition-timing-function: ease-in-out;
+	-moz-transition-duration: 150ms; -moz-transition-property: color, background, opacity; -moz-transition-timing-function: ease-in-out;
+	-o-transition-duration: 150ms; -o-transition-property: color, background, opacity; -o-transition-timing-function: ease-in-out;
+	transition-duration: 150ms; transition-property: color, background, opacity;
+}
+
+.hide-playlist-meta-pro .wp-playlist-current-item {display:none !important;}
+
+
+/*
+=============================================== 02. MOBILE/TABLET STYLES ===============================================
+*/
+/* -- This Code Removes Audio Controls on Mobile/Tablet  -- */
+@media only screen and (max-width: 959px) {
+
+	/* Remove Playlist Left/Right */
+	body .progression-skin .wp-playlist.wp-audio-playlist .mejs-container .mejs-inner .mejs-controls .mejs-playpause-button {
+		margin-left:0px !important; margin-right:0px !important;
+	}
+	.progression-skin .wp-playlist.wp-audio-playlist .wp-playlist-next, .progression-skin  .wp-playlist.wp-audio-playlist .wp-playlist-prev {
+		display:none;
+	}
+
+}
+
+
+
+
+/*
+=============================================== 03. PLAYER ICON COLORS ===============================================
+*/
+/* Main Button Color */
+.progression-skin .wp-playlist .wp-playlist-next, .progression-skin  .wp-playlist .wp-playlist-prev,
+body .progression-skin .mejs-inner .mejs-controls span,
+body .progression-skin .mejs-inner .mejs-controls button {
+	color:#868686;
+}
+
+/* Main Button Hover Color */
+body .progression-skin .mejs-container .mejs-controls .mejs-playlist.progression-selected button,
+.progression-skin .wp-playlist .wp-playlist-next:hover, .progression-skin  .wp-playlist .wp-playlist-prev:hover,
+body .progression-skin .mejs-inner .mejs-controls button:hover {
+	color:#555555;
+}
+
+
+/*
+=============================================== 04. PLAYER CONTAINERS ===============================================
+*/
+/* -------------------- A. Main Container  -------------------- */
+body .progression-skin .mejs-container {
+	border:1px solid #b5b5b5;
+	background:#000000;
+	margin:0px;
+}
+
+body .progression-skin .mejs-container.mejs-audio {
+	height:40px !important;
+}
+
+
+body .progression-skin .mejs-container .mejs-controls, .progression-skin .wp-playlist .wp-playlist-next, .progression-skin  .wp-playlist .wp-playlist-prev {
+	height:40px;
+	background:#ffffff; /* IE Fall-Back */
+	background-image: -webkit-gradient(linear, bottom, 0% 0%, 0% 100%, from(#eeeeee), to(#FFFFFF));  /* Safari 4+, Chrome 1-9 */
+	background-image: -webkit-linear-gradient(bottom, #eeeeee, #FFFFFF);   /* Safari 5.1+, Mobile Safari, Chrome 10+ */
+	background-image: -moz-linear-gradient(bottom, #eeeeee, #FFFFFF);  /* Firefox 3.6+ */
+	background-image: -ms-linear-gradient(bottom, #eeeeee, #FFFFFF); /* IE 10+ */
+	background-image: -o-linear-gradient(bottom, #eeeeee, #FFFFFF); /* Opera 11.10+ */
+	background-image: linear-gradient(bottom, #eeeeee 0%, #FFFFFF 100%);
+}
+
+body .progression-skin .mejs-container .mejs-controls .mejs-playlist.progression-selected button,
+body .progression-skin .mejs-container .mejs-inner .mejs-controls .mejs-fullscreen-button button:hover,
+body .progression-skin .mejs-container .mejs-controls .mejs-playlist button:hover,
+.progression-skin .wp-playlist .wp-playlist-next:hover, .progression-skin  .wp-playlist .wp-playlist-prev:hover,
+body .progression-skin .mejs-container .mejs-controls .mejs-playpause-button button:hover {
+	background: #eeeeee; /* IE Fall-Back */
+	background-image: -webkit-gradient(linear, bottom, 0% 0%, 0% 100%, from(#ffffff), to(#f0f0f0));  /* Safari 4+, Chrome 1-9 */
+	background-image: -webkit-linear-gradient(bottom, #ffffff, #f0f0f0);   /* Safari 5.1+, Mobile Safari, Chrome 10+ */
+	background-image: -moz-linear-gradient(bottom, #ffffff, #f0f0f0);  /* Firefox 3.6+ */
+	background-image: -ms-linear-gradient(bottom, #ffffff, #f0f0f0); /* IE 10+ */
+	background-image: -o-linear-gradient(bottom, #ffffff, #f0f0f0); /* Opera 11.10+ */
+	background-image: linear-gradient(bottom, #ffffff 0%, #f0f0f0 100%);
+}
+
+body .progression-skin .mejs-container .mejs-controls .mejs-playlist {
+	width:35px;
+}
+body .progression-skin .mejs-container .mejs-controls .mejs-playlist button {
+	font-size:12px;
+	height:40px;
+	width:35px;
+	margin:0px;
+	border-left:1px solid #b5b5b5;
+}
+
+
+
+
+
+/*
+=============================================== 05. PLAYER BUTTONS ===============================================
+*/
+body .progression-skin .mejs-container .mejs-controls .mejs-playpause-button {
+	margin:0px;
+	padding:0px;
+	width:48px;
+}
+body .progression-skin .mejs-container .mejs-controls .mejs-playpause-button button {
+	margin:0px;
+	padding:0px;
+	height:40px;
+	width:40px;
+	font-size:22px;
+	border-right:1px solid #b5b5b5;
+}
+
+
+
+/*
+=============================================== 06. PLAYER TIMER ===============================================
+*/
+body .progression-skin .mejs-container .mejs-controls .mejs-volume-button {
+	border-left:1px solid #b5b5b5;
+	height:36px;
+	padding-left:3px;
+}
+
+body .progression-skin .mejs-container .mejs-controls .mejs-duration-container {
+
+}
+body .progression-skin .mejs-container .mejs-controls .mejs-duration {
+	margin-right:6px;
+}
+
+body .progression-skin .mejs-container .mejs-inner .mejs-controls .mejs-time-rail span.mejs-time-total ,
+body .progression-skin .mejs-container .mejs-inner .mejs-controls .mejs-time-rail span.mejs-time-loaded,
+body .progression-skin .mejs-container .mejs-inner .mejs-controls .mejs-time-rail span.mejs-time-current {
+	height:10px;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+
+body .progression-skin .mejs-container .mejs-inner .mejs-controls .mejs-time-rail span.mejs-time-total {
+	background:#d5d5d5; /* IE Fall-Back */
+	background-image: -webkit-gradient(linear, bottom, 0% 0%, 0% 100%, from(#d5d5d5), to(#c6c6c6));  /* Safari 4+, Chrome 1-9 */
+	background-image: -webkit-linear-gradient(bottom, #d5d5d5, #c6c6c6);   /* Safari 5.1+, Mobile Safari, Chrome 10+ */
+	background-image: -moz-linear-gradient(bottom, #d5d5d5, #c6c6c6);  /* Firefox 3.6+ */
+	background-image: -ms-linear-gradient(bottom, #d5d5d5, #c6c6c6); /* IE 10+ */
+	background-image: -o-linear-gradient(bottom, #d5d5d5, #c6c6c6); /* Opera 11.10+ */
+	background-image: linear-gradient(bottom, #d5d5d5 0%, #c6c6c6 100%);
+	-webkit-box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0.15);
+	box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0.15);
+	
+}
+
+body .progression-skin .mejs-container .mejs-inner .mejs-controls .mejs-time-rail span.mejs-time-loaded { 
+	-webkit-box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+	box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+	background:#aaaaaa; /* IE Fall-Back */
+	background-image: -webkit-gradient(linear, bottom, 0% 0%, 0% 100%, from(#c6c6c6), to(#aaaaaa));  /* Safari 4+, Chrome 1-9 */
+	background-image: -webkit-linear-gradient(bottom, #c6c6c6, #aaaaaa);   /* Safari 5.1+, Mobile Safari, Chrome 10+ */
+	background-image: -moz-linear-gradient(bottom, #c6c6c6, #aaaaaa);  /* Firefox 3.6+ */
+	background-image: -ms-linear-gradient(bottom, #c6c6c6, #aaaaaa); /* IE 10+ */
+	background-image: -o-linear-gradient(bottom, #c6c6c6, #aaaaaa); /* Opera 11.10+ */
+	background-image: linear-gradient(bottom, #c6c6c6 0%, #aaaaaa 100%);
+}
+
+
+body .progression-skin .mejs-container .mejs-inner .mejs-controls .mejs-time-rail span.mejs-time-current {
+	-webkit-box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+	box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+	background:#666666; /* IE Fall-Back */
+	background-image: -webkit-gradient(linear, bottom, 0% 0%, 0% 100%, from(#666666), to(#444444));  /* Safari 4+, Chrome 1-9 */
+	background-image: -webkit-linear-gradient(bottom, #666666, #444444);   /* Safari 5.1+, Mobile Safari, Chrome 10+ */
+	background-image: -moz-linear-gradient(bottom, #666666, #444444);  /* Firefox 3.6+ */
+	background-image: -ms-linear-gradient(bottom, #666666, #444444); /* IE 10+ */
+	background-image: -o-linear-gradient(bottom, #666666, #444444); /* Opera 11.10+ */
+	background-image: linear-gradient(bottom, #666666 0%, #444444 100%);
+
+}
+
+
+/* -------------------- A. Handle and Timer  -------------------- */
+body .progression-skin .mejs-controls .mejs-time-rail .mejs-time-handle  {
+	display: block; margin: 0; padding:0px; border: 0;
+	width: 6px;
+	height: 6px;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	top:-3px;
+	left:-8px;
+	-webkit-box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.25);
+	box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.25);
+	border:5px solid #eaeaea;
+	background: #adadad;	
+	background-image: -webkit-gradient(linear, bottom, 0% 0%, 0% 100%, from(#9c9c9c), to(#adadad));  /* Safari 4+, Chrome 1-9 */
+	background-image: -webkit-linear-gradient(bottom, #9c9c9c, #adadad);   /* Safari 5.1+, Mobile Safari, Chrome 10+ */
+	background-image: -moz-linear-gradient(bottom, #9c9c9c, #adadad);  /* Firefox 3.6+ */
+	background-image: -ms-linear-gradient(bottom, #9c9c9c, #adadad); /* IE 10+ */
+	background-image: -o-linear-gradient(bottom, #9c9c9c, #adadad); /* Opera 11.10+ */
+	background-image: linear-gradient(bottom, #9c9c9c 0%, #adadad 100%);
+}
+
+body .progression-skin .mejs-controls .mejs-time-rail .mejs-time-float {
+	background: #909090;
+	border-color:#909090;
+	background: rgba(0, 0, 0, 0.5); 
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+body .progression-skin .mejs-controls .mejs-time-rail .mejs-time-float-current {
+	margin:3px 4px 4px 4px;
+	font-size:10px;
+	color:#ffffff;
+}
+
+body .progression-skin .mejs-controls .mejs-time-rail .mejs-time-float-corner {
+	top: 17px;
+	border: solid 5px #909090;
+	border-color: #909090 transparent transparent transparent;
+}
+
+
+
+/* -------------------- B. Time (Current / Duration)  -------------------- */
+body .progression-skin .mejs-inner .mejs-controls .mejs-currenttime-container {
+	margin-right:7px;
+}
+
+body .progression-skin .mejs-inner .mejs-controls .mejs-time {
+	height: 27px;
+}
+
+body .progression-skin .mejs-inner .mejs-time .mejs-currenttime, .progression-skin .mejs-inner .mejs-time  .mejs-duration {
+	color:#aaaaaa;
+}
+
+
+/* Time Rail Positioning */
+body .progression-skin .mejs-inner .mejs-controls .mejs-time {
+	padding-top:13px;
+}
+body .progression-skin .mejs-controls div.mejs-time-rail {
+	padding-top:10px;
+}
+
+/* Volumne Rail Positioning */
+body .progression-skin .mejs-controls div.mejs-horizontal-volume-slider {
+	margin-top:5px;
+}
+
+
+
+/*
+=============================================== 07. PLAYER VOLUME ===============================================
+*/
+.progression-skin .mejs-container .mejs-inner .mejs-controls .mejs-volume-button {
+	padding-top:5px;
+	margin-top:0px;
+	margin-right:3px;
+}
+
+
+body .progression-skin .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-total {
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	-webkit-box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+	box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+	background:#aaaaaa;
+	background-image: -webkit-gradient(linear, bottom, 0% 0%, 0% 100%, from(#c6c6c6), to(#aaaaaa));  /* Safari 4+, Chrome 1-9 */
+	background-image: -webkit-linear-gradient(bottom, #c6c6c6, #aaaaaa);   /* Safari 5.1+, Mobile Safari, Chrome 10+ */
+	background-image: -moz-linear-gradient(bottom, #c6c6c6, #aaaaaa);  /* Firefox 3.6+ */
+	background-image: -ms-linear-gradient(bottom, #c6c6c6, #aaaaaa); /* IE 10+ */
+	background-image: -o-linear-gradient(bottom, #c6c6c6, #aaaaaa); /* Opera 11.10+ */
+	background-image: linear-gradient(bottom, #c6c6c6 0%, #aaaaaa 100%);
+}
+
+body .progression-skin .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current {
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	-webkit-box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+	box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+	background:#666666;
+	background-image: -webkit-gradient(linear, bottom, 0% 0%, 0% 100%, from(#666666), to(#444444));  /* Safari 4+, Chrome 1-9 */
+	background-image: -webkit-linear-gradient(bottom, #666666, #444444);   /* Safari 5.1+, Mobile Safari, Chrome 10+ */
+	background-image: -moz-linear-gradient(bottom, #666666, #444444);  /* Firefox 3.6+ */
+	background-image: -ms-linear-gradient(bottom, #666666, #444444); /* IE 10+ */
+	background-image: -o-linear-gradient(bottom, #666666, #444444); /* Opera 11.10+ */
+	background-image: linear-gradient(bottom, #666666 0%, #444444 100%);
+}
+
+body .progression-skin .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-handle {
+	display: block;
+	position: absolute;
+	width: 5px;
+	height:5px;
+	margin-left:-6px;
+	top:8px;
+	background: #adadad;	
+	background-image: -webkit-gradient(linear, bottom, 0% 0%, 0% 100%, from(#9c9c9c), to(#adadad));  /* Safari 4+, Chrome 1-9 */
+	background-image: -webkit-linear-gradient(bottom, #9c9c9c, #adadad);   /* Safari 5.1+, Mobile Safari, Chrome 10+ */
+	background-image: -moz-linear-gradient(bottom, #9c9c9c, #adadad);  /* Firefox 3.6+ */
+	background-image: -ms-linear-gradient(bottom, #9c9c9c, #adadad); /* IE 10+ */
+	background-image: -o-linear-gradient(bottom, #9c9c9c, #adadad); /* Opera 11.10+ */	
+	background-image: linear-gradient(bottom, #9c9c9c 0%, #adadad 100%);
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	cursor: pointer;
+	-webkit-box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.25);
+	box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.25);
+	border:4px solid #eaeaea;
+	text-align: center;
+}
+
+
+
+/*
+=============================================== 08. VIDEO STYLES ===============================================
+*/
+body .progression-skin .mejs-container .mejs-inner .mejs-controls .mejs-fullscreen-button {
+	border-left:1px solid #b5b5b5;
+	margin:0px;
+	height:40px;
+}
+
+body .progression-skin .mejs-container .mejs-inner .mejs-controls .mejs-fullscreen-button button {
+	margin:0px;
+	height:40px;
+	width:26px;
+}
+
+body .progression-skin .mejs-container .mejs-inner .mejs-controls .mejs-volume-button .mejs-volume-slider {
+    top: -115px;
+}
+
+
+body .progression-skin .mejs-video.mejs-container .mejs-layers .mejs-layer .mejs-overlay-button {
+	background:none;
+	background:#000000;
+	background: rgba(0, 0, 0, 0.75);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+	width: 60px;
+	height: 60px;
+	margin:-35px 0 0 -30px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+body .progression-skin .mejs-video.mejs-container .mejs-layers .mejs-layer .mejs-overlay-button:before {
+	color:#ffffff;
+	line-height:1;
+	font-size:36px;
+	text-decoration: inherit;
+	display: inline-block;
+	left:13px;
+	top:13px;
+	margin:0px;
+	padding:0px;
+	position:relative;
+}
+
+body .progression-skin .mejs-video.mejs-container .mejs-layers .mejs-layer.mejs-overlay:hover .mejs-overlay-button {
+	background:none;
+	background:#000000;
+	background: rgba(0, 0, 0, 0.95);
+}
+
+
+
+/*
+=============================================== 09. PLAYLIST STYLES ===============================================
+*/
+
+body .progression-skin .wp-playlist.wp-audio-playlist .mejs-container .mejs-inner .mejs-controls .mejs-playpause-button {
+	margin-left:40px;
+	margin-right:40px;
+}
+
+.progression-skin .wp-playlist.wp-audio-playlist .wp-playlist-next, .progression-skin  .wp-playlist.wp-audio-playlist .wp-playlist-prev {
+	line-height:40px; 
+	margin-bottom:-40px;
+	float:left;
+	text-align:center;
+	top:-41px;
+	left:1px;
+	position:relative;
+	z-index:1;
+	font-size:15px;
+	border-right:1px solid #b5b5b5;
+}
+
+.progression-skin  .wp-playlist.wp-audio-playlist .wp-playlist-next {
+	left:81px;
+}
+
+.progression-skin .wp-playlist.wp-video-playlist .wp-playlist-next, .progression-skin  .wp-playlist.wp-video-playlist .wp-playlist-prev {
+	display:none;
+}
+/* Hide the next/previous buttons on audio playlist
+body .progression-skin .wp-playlist.wp-audio-playlist .mejs-container .mejs-inner .mejs-controls .mejs-playpause-button {
+	margin-left:0px; margin-right:0px;
+}
+.progression-skin .wp-playlist.wp-audio-playlist .wp-playlist-next, .progression-skin  .wp-playlist.wp-audio-playlist .wp-playlist-prev {
+	display:none;
+}
+*/
+
+
+body .progression-skin .wp-playlist {
+	padding:0px;
+	background:none;
+	border:none;
+}
+
+body .progression-skin .wp-playlist-tracks {
+	margin-left:1px;
+	margin-right:-1px;
+	margin-top:0px;
+	padding-top:0px;
+	border-left:1px solid #b5b5b5;
+	border-right:1px solid #b5b5b5;
+	border-bottom:1px solid #b5b5b5;
+	-webkit-box-shadow: inset 0px 2px 2px 0px rgba(0, 0, 0, 0.15);
+	box-shadow: inset 0px 2px 2px 0px rgba(0, 0, 0, 0.15);
+	background:#ffffff;
+}
+
+
+body .progression-skin .wp-playlist-item.wp-playlist-playing, body .progression-skin .wp-playlist-item.wp-playlist-playing:hover {
+	background:#bbbbbb;
+	background: rgba(0, 0, 0, 0.35);
+	font-weight:normal;
+}
+
+body .progression-skin .wp-playlist-item.wp-playlist-playing a, body .progression-skin .wp-playlist-item.wp-playlist-playing a:hover {
+	color:#ffffff;
+}
+
+body .progression-skin .wp-playlist-item.wp-playlist-playing .wp-playlist-item-length {
+	color:#ffffff;
+}
+
+body .progression-skin  .wp-playlist-item {
+	border-color:#b5b5b5;
+	padding-top:7px;
+	padding-bottom:7px;
+	color:#777777;
+}
+
+body .progression-skin  .wp-playlist-item a, body .progression-skin  .wp-playlist-item .wp-playlist-item-length {
+	color:#777777;
+}
+
+body .progression-skin  .wp-playlist-item:hover {
+	background-color: rgba(0, 0, 0, 0.06);
+}
+body .progression-skin  .wp-playlist-caption {
+	padding-left:12px;
+}
+
+body .progression-skin .wp-playlist-item-artist, body .progression-skin  .wp-playlist-caption, body .progression-skin  .wp-playlist-item-title {
+	font-size: 12px;
+}
+
+body .progression-skin  .wp-playlist-item-length {
+	top:8px;
+	right:12px;
+	font-size:11px;
+}
+
+
+
+/*
+=============================================== 10. PLAYER SMALL SIZE ===============================================
+*/
+body .progression-skin .pro-small-player .mejs-container.mejs-audio {
+	height:30px !important;
+}
+
+body .progression-skin .pro-small-player .mejs-container .mejs-controls .mejs-volume-button {
+	height:30px;
+}
+
+body .progression-skin .pro-small-player .mejs-container .mejs-controls, .progression-skin .pro-small-player .wp-playlist .wp-playlist-next, .progression-skin .pro-small-player  .wp-playlist .wp-playlist-prev {
+	height:30px;
+}
+
+
+body .progression-skin .pro-small-player .mejs-container .mejs-controls .mejs-playlist {
+	width:30px;
+}
+
+
+body .progression-skin .pro-small-player .mejs-container .mejs-controls .mejs-playlist button {
+	height:30px;
+	width:30px;
+	font-size:11px;
+}
+
+body .progression-skin .pro-small-player .mejs-container .mejs-controls .mejs-playpause-button {
+	width:40px;
+}
+body .progression-skin .pro-small-player .mejs-container .mejs-controls .mejs-playpause-button button {
+	height:30px;
+	width:34px;
+	font-size:18px;
+}
+
+
+
+body .progression-skin .pro-small-player .mejs-container .mejs-inner .mejs-controls .mejs-fullscreen-button {
+	height:30px;
+}
+
+body .progression-skin .pro-small-player .mejs-container .mejs-inner .mejs-controls .mejs-fullscreen-button button {
+	height:30px;
+	width:26px;
+	font-size:11px;
+}
+
+
+body .progression-skin .pro-small-player .mejs-container .mejs-inner .mejs-controls .mejs-volume-button .mejs-volume-slider {
+    top: -115px;
+}
+
+
+
+.progression-skin .pro-small-player .wp-playlist .wp-playlist-next, .progression-skin .pro-small-player .wp-playlist .wp-playlist-prev {
+	width:30px;
+	height:30px;
+	font-size:12px;
+}
+
+body .progression-skin .pro-small-player .wp-playlist.wp-audio-playlist .mejs-container .mejs-inner .mejs-controls .mejs-playpause-button {
+	margin-left:30px;
+	margin-right:30px;
+}
+
+
+.progression-skin .pro-small-player .wp-playlist.wp-audio-playlist .wp-playlist-next, .progression-skin .pro-small-player  .wp-playlist.wp-audio-playlist .wp-playlist-prev {
+	line-height:30px; 
+	margin-bottom:-30px;
+	top:-31px;
+}
+
+.progression-skin .pro-small-player  .wp-playlist.wp-audio-playlist .wp-playlist-next {
+	left:65px;
+}
+
+
+body .progression-skin  .pro-small-player .wp-playlist-item {
+	padding-top:5px;
+	padding-bottom:5px;
+}
+
+body .progression-skin .pro-small-player .wp-playlist-caption {
+	padding-left:10px;
+}
+
+body .progression-skin .pro-small-player .wp-playlist-caption, body .progression-skin .pro-small-player .wp-playlist-item-title, body .progression-skin .pro-small-player .wp-playlist-item-artist {
+	font-size: 11px;
+}
+
+body .progression-skin .pro-small-player .wp-playlist-item-length {
+	top:6px;
+	right:10px;
+	font-size:10px;
+}
+
+
+
+body .progression-skin .pro-small-player .mejs-inner .mejs-controls .mejs-time {
+	height: 21px;
+}
+
+body .progression-skin .pro-small-player .mejs-inner .mejs-controls .mejs-time {
+	padding-top:9px;
+}
+
+
+body .progression-skin .pro-small-player .mejs-controls div.mejs-horizontal-volume-slider {
+	margin-top:4px;
+}
+
+
+
+.progression-skin .pro-small-player .mejs-container .mejs-inner .mejs-controls .mejs-volume-button {
+	padding-top:0px;
+}
+
+
+.progression-skin .pro-small-player .mejs-container .mejs-inner .mejs-time-rail {
+	margin-top:-4px;
+}
+
+.progression-skin.progression-fancy .pro-small-player .mejs-container .mejs-inner .mejs-controls .mejs-volume-button,
+.progression-skin .pro-small-player .mejs-container .mejs-inner .mejs-controls .mejs-volume-button {
+	padding-top:1px;
+}
+
+
+
+body .progression-skin .pro-small-player .mejs-controls .mejs-horizontal-volume-slider {
+	top:-3px;
+}
+
+
+
+/*
+=============================================== 11. PLAYER DROP SHADOW ===============================================
+*/
+body .progression-skin .mejs-container {
+	-moz-box-shadow:    2px 2px 4px rgba(0, 0, 0, 0.15);
+	-webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+
+
+/*
+=============================================== 12. FANCY SKIN ===============================================
+*/
+body .progression-skin.progression-fancy .mejs-container {
+	border:1px solid #c2c2c2;
+}
+
+
+/* Main Button Color */
+body .progression-skin.progression-fancy .wp-playlist .wp-playlist-next, .progression-skin.progression-fancy  .wp-playlist .wp-playlist-prev,
+body .progression-skin.progression-fancy .mejs-inner .mejs-controls span,
+body .progression-skin.progression-fancy .mejs-inner .mejs-controls button {
+	color:#6b6b6b;
+	text-shadow: 1px 1px 1px #ffffff;
+}
+
+body .progression-skin.progression-fancy .mejs-controls .mejs-time-rail .mejs-time-float-current {
+	color:#ffffff;
+	text-shadow: none;
+}
+
+/* Main Button Hover Color */
+body .progression-skin .progression-fancy .mejs-controls .mejs-playlist.progression-selected button,
+.progression-skin.progression-fancy .wp-playlist .wp-playlist-next:hover, .progression-skin.progression-fancy  .wp-playlist .wp-playlist-prev:hover,
+body .progression-skin.progression-fancy .mejs-inner .mejs-controls button:hover {
+	color:#6b6b6b;
+}
+
+
+body .progression-skin.progression-fancy .mejs-container .mejs-controls, .progression-skin.progression-fancy .wp-playlist .wp-playlist-next, .progression-skin.progression-fancy  .wp-playlist .wp-playlist-prev {
+	background:#f1f1f1; /* IE Fall-Back */
+	background-image: -webkit-gradient(linear, bottom, 0% 0%, 0% 100%, from(#deddde), to(#f2f2f2));  /* Safari 4+, Chrome 1-9 */
+	background-image: -webkit-linear-gradient(bottom, #deddde, #f2f2f2);   /* Safari 5.1+, Mobile Safari, Chrome 10+ */
+	background-image: -moz-linear-gradient(bottom, #deddde, #f2f2f2);  /* Firefox 3.6+ */
+	background-image: -ms-linear-gradient(bottom, #deddde, #f2f2f2); /* IE 10+ */
+	background-image: -o-linear-gradient(bottom, #deddde, #f2f2f2); /* Opera 11.10+ */
+	background-image: linear-gradient(bottom, #deddde 0%, #f2f2f2 100%);
+}
+
+body .progression-skin.progression-fancy .mejs-controls .mejs-playlist.progression-selected button,
+body .progression-skin.progression-fancy .mejs-container .mejs-inner .mejs-controls .mejs-fullscreen-button button:hover,
+body .progression-skin.progression-fancy .mejs-container .mejs-controls .mejs-playlist button:hover,
+.progression-skin.progression-fancy .wp-playlist .wp-playlist-next:hover, .progression-skin.progression-fancy  .wp-playlist .wp-playlist-prev:hover,
+body .progression-skin.progression-fancy .mejs-container .mejs-controls .mejs-playpause-button button:hover {
+	background:#deddde; /* IE Fall-Back */
+	background-image: -webkit-gradient(linear, bottom, 0% 0%, 0% 100%, from(#f2f2f2), to(#deddde));  /* Safari 4+, Chrome 1-9 */
+	background-image: -webkit-linear-gradient(bottom, #f2f2f2, #deddde);   /* Safari 5.1+, Mobile Safari, Chrome 10+ */
+	background-image: -moz-linear-gradient(bottom, #f2f2f2, #deddde);  /* Firefox 3.6+ */
+	background-image: -ms-linear-gradient(bottom, #f2f2f2, #deddde); /* IE 10+ */
+	background-image: -o-linear-gradient(bottom, #f2f2f2, #deddde); /* Opera 11.10+ */
+	background-image: linear-gradient(bottom, #f2f2f2 0%, #deddde 100%);
+}
+
+body .progression-skin.progression-fancy .mejs-container .mejs-inner .mejs-controls .mejs-fullscreen-button,
+body .progression-skin.progression-fancy .mejs-container .mejs-controls .mejs-playlist button {
+	border-left:1px solid #c2c2c2;
+}
+
+
+body .progression-skin.progression-fancy .mejs-container .mejs-controls .mejs-volume-button {
+	border-left:1px solid #c2c2c2;
+}
+
+.progression-skin.progression-fancy .wp-playlist.wp-audio-playlist .wp-playlist-next, .progression-skin.progression-fancy  .wp-playlist.wp-audio-playlist .wp-playlist-prev,
+body .progression-skin.progression-fancy .mejs-container .mejs-controls .mejs-playpause-button button {
+	border-right:1px solid #c2c2c2;
+}
+
+body .progression-skin.progression-fancy .wp-playlist-tracks {
+	border-left:1px solid #c2c2c2;
+	border-right:1px solid #c2c2c2;
+	border-bottom:1px solid #c2c2c2;
+	background:#efefef;
+}
+
+body .progression-skin.progression-fancy  .wp-playlist-item {
+	border-color:#c2c2c2;
+}
+
+
+body .progression-skin.progression-fancy .wp-playlist-item.wp-playlist-playing, body .progression-skin.progression-fancy .wp-playlist-item.wp-playlist-playing:hover {
+	background:#bbbbbb;
+	background: rgba(0, 0, 0, 0.35);
+}
+
+body .progression-skin.progression-fancy .wp-playlist-item.wp-playlist-playing a, body .progression-skin.progression-fancy .wp-playlist-item.wp-playlist-playing a:hover {
+	color:#ffffff;
+}
+
+body .progression-skin.progression-fancy .wp-playlist-item.wp-playlist-playing .wp-playlist-item-length {
+	color:#ffffff;
+}
+
+body .progression-skin.progression-fancy  .wp-playlist-item {
+	border-color:#b5b5b5;
+	color:#777777;
+}
+
+body .progression-skin.progression-fancy  .wp-playlist-item a, body .progression-skin.progression-fancy  .wp-playlist-item .wp-playlist-item-length {
+	color:#777777;
+}
+
+body .progression-skin.progression-fancy  .wp-playlist-item:hover {
+	background-color: rgba(0, 0, 0, 0.06);
+}
+
+/* Timer */
+body .progression-skin.progression-fancy .mejs-inner .mejs-time .mejs-currenttime, .progression-skin.progression-fancy .mejs-inner .mejs-time  .mejs-duration {
+	color:#777777;
+}
+
+
+body .progression-skin.progression-fancy .mejs-container .mejs-inner .mejs-controls .mejs-time-rail span.mejs-time-total {
+	background:#9a9a9a; /* IE Fall-Back */
+	background-image: -webkit-gradient(linear, bottom, 0% 0%, 0% 100%, from(#bcbcbc), to(#9a9a9a));  /* Safari 4+, Chrome 1-9 */
+	background-image: -webkit-linear-gradient(bottom, #bcbcbc, #9a9a9a);   /* Safari 5.1+, Mobile Safari, Chrome 10+ */
+	background-image: -moz-linear-gradient(bottom, #bcbcbc, #9a9a9a);  /* Firefox 3.6+ */
+	background-image: -ms-linear-gradient(bottom, #bcbcbc, #9a9a9a); /* IE 10+ */
+	background-image: -o-linear-gradient(bottom, #bcbcbc, #9a9a9a); /* Opera 11.10+ */
+	background-image: linear-gradient(bottom, #bcbcbc 0%, #9a9a9a 100%);
+	-webkit-box-shadow: inset 1px 1px 2px  rgba(0, 0, 0, 0.4);
+	box-shadow: inset 1px 1px 2px  rgba(0, 0, 0, 0.4);
+}
+
+body .progression-skin.progression-fancy .mejs-container .mejs-inner .mejs-controls .mejs-time-rail span.mejs-time-loaded { 
+	-webkit-box-shadow: inset 1px 1px 2px  rgba(0, 0, 0, 0.4);
+	box-shadow: inset 1px 1px 2px  rgba(0, 0, 0, 0.4);
+	background:#8a8a8a; /* IE Fall-Back */
+	background-image: -webkit-gradient(linear, bottom, 0% 0%, 0% 100%, from(#b1b1b1), to(#8a8a8a));  /* Safari 4+, Chrome 1-9 */
+	background-image: -webkit-linear-gradient(bottom, #b1b1b1, #8a8a8a);   /* Safari 5.1+, Mobile Safari, Chrome 10+ */
+	background-image: -moz-linear-gradient(bottom, #b1b1b1, #8a8a8a);  /* Firefox 3.6+ */
+	background-image: -ms-linear-gradient(bottom, #b1b1b1, #8a8a8a); /* IE 10+ */
+	background-image: -o-linear-gradient(bottom, #b1b1b1, #8a8a8a); /* Opera 11.10+ */
+	background-image: linear-gradient(bottom, #b1b1b1 0%, #8a8a8a 100%);
+}
+
+body .progression-skin.progression-fancy .mejs-container .mejs-inner .mejs-controls .mejs-time-rail span.mejs-time-current {
+	-webkit-box-shadow: inset 1px 1px 2px  rgba(0, 0, 0, 0.4);
+	box-shadow: inset 1px 1px 2px  rgba(0, 0, 0, 0.4);
+	background:#737373; /* IE Fall-Back */
+	background-image: -webkit-gradient(linear, bottom, 0% 0%, 0% 100%, from(#88888b), to(#737373));  /* Safari 4+, Chrome 1-9 */
+	background-image: -webkit-linear-gradient(bottom, #88888b, #737373);   /* Safari 5.1+, Mobile Safari, Chrome 10+ */
+	background-image: -moz-linear-gradient(bottom, #88888b, #737373);  /* Firefox 3.6+ */
+	background-image: -ms-linear-gradient(bottom, #88888b, #737373); /* IE 10+ */
+	background-image: -o-linear-gradient(bottom, #88888b, #737373); /* Opera 11.10+ */
+	background-image: linear-gradient(bottom, #88888b 0%, #737373 100%);
+
+}
+
+body .progression-skin.progression-fancy .mejs-controls .mejs-time-rail .mejs-time-handle  {
+	border:none;
+	width: 15px;
+	height: 15px;
+	top:-3px; 
+	left:-8px;
+	border-radius: 20px; -moz-border-radius: 20px; -webkit-border-radius: 20px;
+	-webkit-box-shadow: inset 0 0 1px 1px rgba(255,255,255,0.5), 0 0 0 1px rgba(0,0,0,.3), 0 1px 2px 0 rgba(0,0,0,.3);
+	box-shadow:  inset 0 0 1px 1px rgba(255,255,255,0.5), 0 0 0 1px rgba(0,0,0,.3), 0 1px 2px 0 rgba(0,0,0,.3);
+	background: #ffffff url(../build/timer-handle.png) 1px 1px no-repeat;
+	background-color: transparent; /* IE8 and below */
+}
+
+
+.progression-skin.progression-fancy .mejs-container .mejs-inner .mejs-controls .mejs-volume-button {
+	padding-top:5px;
+	margin-top:0px;
+	margin-right:3px;
+}
+
+
+body .progression-skin.progression-fancy .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-total {
+	height: 9px;
+	top:11px;
+	background:#9a9a9a; /* IE Fall-Back */
+	background-image: -webkit-gradient(linear, bottom, 0% 0%, 0% 100%, from(#bcbcbc), to(#9a9a9a));  /* Safari 4+, Chrome 1-9 */
+	background-image: -webkit-linear-gradient(bottom, #bcbcbc, #9a9a9a);   /* Safari 5.1+, Mobile Safari, Chrome 10+ */
+	background-image: -moz-linear-gradient(bottom, #bcbcbc, #9a9a9a);  /* Firefox 3.6+ */
+	background-image: -ms-linear-gradient(bottom, #bcbcbc, #9a9a9a); /* IE 10+ */
+	background-image: -o-linear-gradient(bottom, #bcbcbc, #9a9a9a); /* Opera 11.10+ */
+	background-image: linear-gradient(bottom, #bcbcbc 0%, #9a9a9a 100%);
+	
+	-webkit-box-shadow: inset 1px 1px 2px  rgba(0, 0, 0, 0.4);
+	box-shadow: inset 1px 1px 2px  rgba(0, 0, 0, 0.4);
+}
+
+body .progression-skin.progression-fancy .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current {
+	-webkit-box-shadow: inset 1px 1px 2px  rgba(0, 0, 0, 0.4);
+	box-shadow: inset 1px 1px 2px  rgba(0, 0, 0, 0.4);
+	background:#737373; /* IE Fall-Back */
+	background-image: -webkit-gradient(linear, bottom, 0% 0%, 0% 100%, from(#88888b), to(#737373));  /* Safari 4+, Chrome 1-9 */
+	background-image: -webkit-linear-gradient(bottom, #88888b, #737373);   /* Safari 5.1+, Mobile Safari, Chrome 10+ */
+	background-image: -moz-linear-gradient(bottom, #88888b, #737373);  /* Firefox 3.6+ */
+	background-image: -ms-linear-gradient(bottom, #88888b, #737373); /* IE 10+ */
+	background-image: -o-linear-gradient(bottom, #88888b, #737373); /* Opera 11.10+ */
+	background-image: linear-gradient(bottom, #88888b 0%, #737373 100%);
+}
+
+body .progression-skin.progression-fancy .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-handle {
+	text-align: center;
+	width: 15px;
+	height: 15px;
+	border:none;
+	border-radius: 20px; -moz-border-radius: 20px; -webkit-border-radius: 20px;
+	-webkit-box-shadow: inset 0 0 1px 1px rgba(255,255,255,0.5), 0 0 0 1px rgba(0,0,0,.3), 0 1px 2px 0 rgba(0,0,0,.3);
+	box-shadow:  inset 0 0 1px 1px rgba(255,255,255,0.5), 0 0 0 1px rgba(0,0,0,.3), 0 1px 2px 0 rgba(0,0,0,.3);
+	background: #ffffff url(../build/timer-handle.png) 1px 1px no-repeat;
+	background-color: transparent\9; /* IE8 and below */  
+}
+
+/*
+=============================================== 13. MINIMAL LIGHT SKIN ===============================================
+*/
+
+body .progression-skin.progression-minimal-light .mejs-container {
+	border:1px solid #c1c1c1;
+}
+
+
+/* Main Button Color */
+.progression-skin.progression-minimal-light .wp-playlist .wp-playlist-next, .progression-skin.progression-minimal-light  .wp-playlist .wp-playlist-prev,
+body .progression-skin.progression-minimal-light .mejs-inner .mejs-controls span,
+body .progression-skin.progression-minimal-light .mejs-inner .mejs-controls button {
+	color:#888888;
+}
+
+/* Main Button Hover Color */
+body .progression-skin.progression-minimal-light .mejs-container .mejs-controls .mejs-playlist.progression-selected button,
+.progression-skin.progression-minimal-light .wp-playlist .wp-playlist-next:hover, .progression-skin.progression-minimal-light  .wp-playlist .wp-playlist-prev:hover,
+body .progression-skin.progression-minimal-light .mejs-inner .mejs-controls button:hover {
+	color:#555555;
+}
+
+
+body .progression-skin.progression-minimal-light .mejs-container .mejs-controls, .progression-skin.progression-minimal-light .wp-playlist .wp-playlist-next, .progression-skin.progression-minimal-light  .wp-playlist .wp-playlist-prev {
+	background:#f7f7f7; /* IE Fall-Back */
+}
+
+body .progression-skin.progression-minimal-light .mejs-container .mejs-controls .mejs-playlist.progression-selected button,
+body .progression-skin.progression-minimal-light .mejs-container .mejs-inner .mejs-controls .mejs-fullscreen-button button:hover,
+body .progression-skin.progression-minimal-light .mejs-container .mejs-controls .mejs-playlist button:hover,
+.progression-skin.progression-minimal-light .wp-playlist .wp-playlist-next:hover, .progression-skin.progression-minimal-light  .wp-playlist .wp-playlist-prev:hover,
+body .progression-skin.progression-minimal-light .mejs-container .mejs-controls .mejs-playpause-button button:hover {
+	background:#f7f7f7; /* IE Fall-Back */
+}
+
+body .progression-skin.progression-minimal-light .mejs-container .mejs-inner .mejs-controls .mejs-fullscreen-button,
+body .progression-skin.progression-minimal-light .mejs-container .mejs-controls .mejs-playlist button {
+	border-left:1px solid #c1c1c1;
+}
+
+body .progression-skin.progression-minimal-light .mejs-container .mejs-controls .mejs-volume-button {
+	border-left:1px solid #c1c1c1;
+}
+.progression-skin.progression-minimal-light .wp-playlist.wp-audio-playlist .wp-playlist-next, .progression-skin.progression-minimal-light  .wp-playlist.wp-audio-playlist .wp-playlist-prev,
+body .progression-skin.progression-minimal-light .mejs-container .mejs-controls .mejs-playpause-button button {
+	border-right:1px solid #c1c1c1;
+}
+
+body .progression-skin.progression-minimal-light .wp-playlist-tracks {
+	border-left:1px solid #c1c1c1;
+	border-right:1px solid #c1c1c1;
+	border-bottom:1px solid #c1c1c1;
+	background:#ffffff;
+}
+
+body .progression-skin.progression-minimal-light  .wp-playlist-item {
+	border-color:#c1c1c1;
+}
+
+
+body .progression-skin.progression-minimal-light .wp-playlist-item.wp-playlist-playing, body .progression-skin.progression-minimal-light .wp-playlist-item.wp-playlist-playing:hover {
+	background: #e9e9e9;
+}
+
+body .progression-skin.progression-minimal-light .wp-playlist-item.wp-playlist-playing a, body .progression-skin.progression-minimal-light .wp-playlist-item.wp-playlist-playing a:hover {
+	color:#666666;
+}
+
+body .progression-skin.progression-minimal-light  .wp-playlist-item {
+	border-color:#c1c1c1;
+	color:#666666;
+	background: #ffffff;
+}
+
+body .progression-skin.progression-minimal-light  .wp-playlist-item a, body .progression-skin.progression-minimal-light  .wp-playlist-item .wp-playlist-item-length {
+	color:#666666;
+}
+
+body .progression-skin.progression-minimal-light  .wp-playlist-item:hover {
+	background: #e9e9e9;
+}
+
+/* Timer */
+body .progression-skin.progression-minimal-light .mejs-inner .mejs-time .mejs-currenttime, .progression-skin.progression-minimal-light .mejs-inner .mejs-time  .mejs-duration {
+	color:#aaaaaa;
+}
+
+
+body .progression-skin.progression-minimal-light .mejs-container .mejs-inner .mejs-controls .mejs-time-rail span.mejs-time-total {
+	background:#c9c9c9; /* IE Fall-Back */
+	-webkit-box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0);
+	box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0);
+}
+
+body .progression-skin.progression-minimal-light .mejs-container .mejs-inner .mejs-controls .mejs-time-rail span.mejs-time-loaded { 
+	-webkit-box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0);
+	box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0);
+	background:#bbbbbb; /* IE Fall-Back */
+}
+
+body .progression-skin.progression-minimal-light .mejs-container .mejs-inner .mejs-controls .mejs-time-rail span.mejs-time-current {
+	-webkit-box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0);
+	box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0);
+	background:#666666; /* IE Fall-Back */
+}
+
+body .progression-skin.progression-minimal-light .mejs-controls .mejs-time-rail .mejs-time-handle  {
+	margin: 0; padding:0px; border: 0;
+	width: 4px;
+	height: 4px;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	top:-1px;
+	left:-6px;
+	-webkit-box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.15);
+	box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.15);
+	border:4px solid #ffffff;
+	background: #ffffff;	
+}
+
+
+
+body .progression-skin.progression-minimal-light .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-total {
+	background:#c9c9c9; /* IE Fall-Back */
+	-webkit-box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0);
+	box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0);
+}
+
+body .progression-skin.progression-minimal-light .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current {
+	background:#777777; /* IE Fall-Back */
+	-webkit-box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0);
+	box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0);
+}
+
+body .progression-skin.progression-minimal-light .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-handle {
+	width: 4px;
+	height:4px;
+	margin-left:-3px;
+	top:10px;
+	background: #ffffff;	
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	cursor: pointer;
+	-webkit-box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.15);
+	box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.15);
+	border:3px solid #ffffff;
+	text-align: center;
+}
+
+
+/*
+=============================================== 14. DARK SKIN ===============================================
+*/
+body .progression-skin.progression-default-dark .mejs-container {
+	border:1px solid #444444;
+}
+
+
+/* Main Button Color */
+.progression-skin.progression-default-dark .wp-playlist .wp-playlist-next, .progression-skin.progression-default-dark  .wp-playlist .wp-playlist-prev,
+body .progression-skin.progression-default-dark .mejs-inner .mejs-controls span,
+body .progression-skin.progression-default-dark .mejs-inner .mejs-controls button {
+	color:#eeeeee;
+}
+
+
+
+/* Main Button Hover Color */
+body .progression-skin.progression-default-dark .mejs-container .mejs-controls .mejs-playlist.progression-selected button,
+.progression-skin.progression-default-dark .wp-playlist .wp-playlist-next:hover, .progression-skin.progression-default-dark  .wp-playlist .wp-playlist-prev:hover,
+body .progression-skin.progression-default-dark .mejs-inner .mejs-controls button:hover {
+	color:#ffffff;
+}
+
+
+body .progression-skin.progression-default-dark .mejs-container .mejs-controls, .progression-skin.progression-default-dark .wp-playlist .wp-playlist-next, .progression-skin.progression-default-dark  .wp-playlist .wp-playlist-prev {
+	background:#202020; /* IE Fall-Back */
+	background-image: -webkit-gradient(linear, bottom, 0% 0%, 0% 100%, from(#202020), to(#494949));  /* Safari 4+, Chrome 1-9 */
+	background-image: -webkit-linear-gradient(bottom, #202020, #494949);   /* Safari 5.1+, Mobile Safari, Chrome 10+ */
+	background-image: -moz-linear-gradient(bottom, #202020, #494949);  /* Firefox 3.6+ */
+	background-image: -ms-linear-gradient(bottom, #202020, #494949); /* IE 10+ */
+	background-image: -o-linear-gradient(bottom, #202020, #494949); /* Opera 11.10+ */
+	background-image: linear-gradient(bottom, #202020 0%, #494949 100%);
+}
+
+body .progression-skin.progression-default-dark .mejs-container .mejs-controls .mejs-playlist.progression-selected button,
+body .progression-skin.progression-default-dark .mejs-container .mejs-inner .mejs-controls .mejs-fullscreen-button button:hover,
+body .progression-skin.progression-default-dark .mejs-container .mejs-controls .mejs-playlist button:hover,
+.progression-skin.progression-default-dark .wp-playlist .wp-playlist-next:hover, .progression-skin.progression-default-dark  .wp-playlist .wp-playlist-prev:hover,
+body .progression-skin.progression-default-dark .mejs-container .mejs-controls .mejs-playpause-button button:hover {
+	background: #494949; /* IE Fall-Back */
+	background-image: -webkit-gradient(linear, bottom, 0% 0%, 0% 100%, from(#494949), to(#202020));  /* Safari 4+, Chrome 1-9 */
+	background-image: -webkit-linear-gradient(bottom, #494949, #202020);   /* Safari 5.1+, Mobile Safari, Chrome 10+ */
+	background-image: -moz-linear-gradient(bottom, #494949, #202020);  /* Firefox 3.6+ */
+	background-image: -ms-linear-gradient(bottom, #494949, #202020); /* IE 10+ */
+	background-image: -o-linear-gradient(bottom, #494949, #202020); /* Opera 11.10+ */
+	background-image: linear-gradient(bottom, #494949 0%, #202020 100%);
+}
+
+body .progression-skin.progression-default-dark .mejs-container .mejs-inner .mejs-controls .mejs-fullscreen-button,
+body .progression-skin.progression-default-dark .mejs-container .mejs-controls .mejs-playlist button {
+	border-left:1px solid #444444;
+}
+
+body .progression-skin.progression-default-dark .mejs-container .mejs-controls .mejs-volume-button {
+	border-left:1px solid #444444;
+}
+.progression-skin.progression-default-dark .wp-playlist.wp-audio-playlist .wp-playlist-next, .progression-skin.progression-default-dark  .wp-playlist.wp-audio-playlist .wp-playlist-prev,
+body .progression-skin.progression-default-dark .mejs-container .mejs-controls .mejs-playpause-button button {
+	border-right:1px solid #444444;
+}
+
+body .progression-skin.progression-default-dark .wp-playlist-tracks {
+	border-left:1px solid #444444;
+	border-right:1px solid #444444;
+	border-bottom:1px solid #444444;
+	background:#202020;
+}
+
+body .progression-skin.progression-default-dark  .wp-playlist-item {
+	border-color:#444444;
+}
+
+
+body .progression-skin.progression-default-dark .wp-playlist-item.wp-playlist-playing, body .progression-skin.progression-default-dark .wp-playlist-item.wp-playlist-playing:hover {
+	color:#ffffff;
+	background:#000000;
+	background: rgba(0, 0, 0, 0.35);
+}
+
+body .progression-skin.progression-default-dark .wp-playlist-item.wp-playlist-playing a, body .progression-skin.progression-default-dark .wp-playlist-item.wp-playlist-playing a:hover {
+	color:#ffffff;
+}
+
+body .progression-skin.progression-default-dark  .wp-playlist-item {
+	color: #999999;  background-color: rgba(250, 250, 250, 0.1);
+}
+
+body .progression-skin.progression-default-dark  .wp-playlist-item a, body .progression-skin.progression-default-dark  .wp-playlist-item .wp-playlist-item-length {
+	color: #999999;
+}
+
+body .progression-skin.progression-default-dark  .wp-playlist-item:hover {
+	background-color: #000000;
+	background-color: rgba(250, 250, 250, 0.06);
+}
+
+/* Timer */
+body .progression-skin.progression-default-dark .mejs-inner .mejs-time .mejs-currenttime, .progression-skin.progression-default-dark .mejs-inner .mejs-time  .mejs-duration {
+	color:#ffffff;
+}
+
+
+body .progression-skin.progression-default-dark .mejs-container .mejs-inner .mejs-controls .mejs-time-rail span.mejs-time-total {
+	background:#888888; /* IE Fall-Back */
+	background-image: -webkit-gradient(linear, bottom, 0% 0%, 0% 100%, from(#888888), to(#666666));  /* Safari 4+, Chrome 1-9 */
+	background-image: -webkit-linear-gradient(bottom, #888888, #666666);   /* Safari 5.1+, Mobile Safari, Chrome 10+ */
+	background-image: -moz-linear-gradient(bottom, #888888, #666666);  /* Firefox 3.6+ */
+	background-image: -ms-linear-gradient(bottom, #888888, #666666); /* IE 10+ */
+	background-image: -o-linear-gradient(bottom, #888888, #666666); /* Opera 11.10+ */
+	background-image: linear-gradient(bottom, #888888 0%, #666666 100%);
+	-webkit-box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0);
+	box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0);
+}
+
+body .progression-skin.progression-default-dark .mejs-container .mejs-inner .mejs-controls .mejs-time-rail span.mejs-time-loaded { 
+	-webkit-box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+	box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+	background:#aaaaaa; /* IE Fall-Back */
+	background-image: -webkit-gradient(linear, bottom, 0% 0%, 0% 100%, from(#aaaaaa), to(#999999));  /* Safari 4+, Chrome 1-9 */
+	background-image: -webkit-linear-gradient(bottom, #aaaaaa, #999999);   /* Safari 5.1+, Mobile Safari, Chrome 10+ */
+	background-image: -moz-linear-gradient(bottom, #aaaaaa, #999999);  /* Firefox 3.6+ */
+	background-image: -ms-linear-gradient(bottom, #aaaaaa, #999999); /* IE 10+ */
+	background-image: -o-linear-gradient(bottom, #aaaaaa, #999999); /* Opera 11.10+ */
+	background-image: linear-gradient(bottom, #aaaaaa 0%, #999999 100%);
+}
+
+body .progression-skin.progression-default-dark .mejs-container .mejs-inner .mejs-controls .mejs-time-rail span.mejs-time-current {
+	-webkit-box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+	box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+	background:#eeeeee; /* IE Fall-Back */
+	background-image: -webkit-gradient(linear, bottom, 0% 0%, 0% 100%, from(#ffffff), to(#bbbbbb));  /* Safari 4+, Chrome 1-9 */
+	background-image: -webkit-linear-gradient(bottom, #ffffff, #bbbbbb);   /* Safari 5.1+, Mobile Safari, Chrome 10+ */
+	background-image: -moz-linear-gradient(bottom, #ffffff, #bbbbbb);  /* Firefox 3.6+ */
+	background-image: -ms-linear-gradient(bottom, #ffffff, #bbbbbb); /* IE 10+ */
+	background-image: -o-linear-gradient(bottom, #ffffff, #bbbbbb); /* Opera 11.10+ */
+	background-image: linear-gradient(bottom, #ffffff 0%, #bbbbbb 100%);
+}
+
+body .progression-skin.progression-default-dark .mejs-controls .mejs-time-rail .mejs-time-handle  {
+	border:none;
+	width: 6px;
+	height: 6px;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	top:-3px;
+	left:-8px;
+	-webkit-box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.25);
+	box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.25);
+	border:5px solid #eaeaea;
+	background: #adadad;	
+	background-image: -webkit-gradient(linear, bottom, 0% 0%, 0% 100%, from(#9c9c9c), to(#adadad));  /* Safari 4+, Chrome 1-9 */
+	background-image: -webkit-linear-gradient(bottom, #9c9c9c, #adadad);   /* Safari 5.1+, Mobile Safari, Chrome 10+ */
+	background-image: -moz-linear-gradient(bottom, #9c9c9c, #adadad);  /* Firefox 3.6+ */
+	background-image: -ms-linear-gradient(bottom, #9c9c9c, #adadad); /* IE 10+ */
+	background-image: -o-linear-gradient(bottom, #9c9c9c, #adadad); /* Opera 11.10+ */
+	background-image: linear-gradient(bottom, #9c9c9c 0%, #adadad 100%);
+}
+
+
+body .progression-skin.progression-default-dark .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-total {
+	background:#888888; /* IE Fall-Back */
+	background-image: -webkit-gradient(linear, bottom, 0% 0%, 0% 100%, from(#888888), to(#666666));  /* Safari 4+, Chrome 1-9 */
+	background-image: -webkit-linear-gradient(bottom, #888888, #666666);   /* Safari 5.1+, Mobile Safari, Chrome 10+ */
+	background-image: -moz-linear-gradient(bottom, #888888, #666666);  /* Firefox 3.6+ */
+	background-image: -ms-linear-gradient(bottom, #888888, #666666); /* IE 10+ */
+	background-image: -o-linear-gradient(bottom, #888888, #666666); /* Opera 11.10+ */
+	background-image: linear-gradient(bottom, #888888 0%, #666666 100%);
+	-webkit-box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0);
+	box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0);
+}
+
+body .progression-skin.progression-default-dark .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current {
+	-webkit-box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+	box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+	background:#eeeeee; /* IE Fall-Back */
+	background-image: -webkit-gradient(linear, bottom, 0% 0%, 0% 100%, from(#ffffff), to(#bbbbbb));  /* Safari 4+, Chrome 1-9 */
+	background-image: -webkit-linear-gradient(bottom, #ffffff, #bbbbbb);   /* Safari 5.1+, Mobile Safari, Chrome 10+ */
+	background-image: -moz-linear-gradient(bottom, #ffffff, #bbbbbb);  /* Firefox 3.6+ */
+	background-image: -ms-linear-gradient(bottom, #ffffff, #bbbbbb); /* IE 10+ */
+	background-image: -o-linear-gradient(bottom, #ffffff, #bbbbbb); /* Opera 11.10+ */
+	background-image: linear-gradient(bottom, #ffffff 0%, #bbbbbb 100%);
+}
+
+body .progression-skin.progression-default-dark .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-handle {
+	width: 5px;
+	height:5px;
+	margin-left:-6px;
+	top:8px;
+	background: #adadad;
+	background-image: -webkit-gradient(linear, bottom, 0% 0%, 0% 100%, from(#9c9c9c), to(#adadad));  /* Safari 4+, Chrome 1-9 */
+	background-image: -webkit-linear-gradient(bottom, #9c9c9c, #adadad);   /* Safari 5.1+, Mobile Safari, Chrome 10+ */
+	background-image: -moz-linear-gradient(bottom, #9c9c9c, #adadad);  /* Firefox 3.6+ */
+	background-image: -ms-linear-gradient(bottom, #9c9c9c, #adadad); /* IE 10+ */
+	background-image: -o-linear-gradient(bottom, #9c9c9c, #adadad); /* Opera 11.10+ */
+	background-image: linear-gradient(bottom, #9c9c9c 0%, #adadad 100%);
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	cursor: pointer;
+	-webkit-box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.25);
+	box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.25);
+	border:4px solid #eaeaea;
+	text-align: center;
+}
+
+
+
+/*
+=============================================== 15. MINIMAL DARK SKIN ===============================================
+*/
+
+body .progression-skin.progression-minimal-dark .mejs-container {
+	border:1px solid #202020;
+}
+
+
+/* Main Button Color */
+.progression-skin.progression-minimal-dark .wp-playlist .wp-playlist-next, .progression-skin.progression-minimal-dark  .wp-playlist .wp-playlist-prev,
+body .progression-skin.progression-minimal-dark .mejs-inner .mejs-controls span,
+body .progression-skin.progression-minimal-dark .mejs-inner .mejs-controls button {
+	color:#eeeeee;
+}
+
+
+
+/* Main Button Hover Color */
+body .progression-skin.progression-minimal-dark .mejs-container .mejs-controls .mejs-playlist.progression-selected button,
+.progression-skin.progression-minimal-dark .wp-playlist .wp-playlist-next:hover, .progression-skin.progression-minimal-dark  .wp-playlist .wp-playlist-prev:hover,
+body .progression-skin.progression-minimal-dark .mejs-inner .mejs-controls button:hover {
+	color:#ffffff;
+}
+
+
+body .progression-skin.progression-minimal-dark .mejs-container .mejs-controls, .progression-skin.progression-minimal-dark .wp-playlist .wp-playlist-next, .progression-skin.progression-minimal-dark  .wp-playlist .wp-playlist-prev {
+	background:#202020;
+}
+
+body .progression-skin.progression-minimal-dark .mejs-container .mejs-controls .mejs-playlist.progression-selected button,
+body .progression-skin.progression-minimal-dark .mejs-container .mejs-inner .mejs-controls .mejs-fullscreen-button button:hover,
+body .progression-skin.progression-minimal-dark .mejs-container .mejs-controls .mejs-playlist button:hover,
+.progression-skin.progression-minimal-dark .wp-playlist .wp-playlist-next:hover, .progression-skin.progression-minimal-dark  .wp-playlist .wp-playlist-prev:hover,
+body .progression-skin.progression-minimal-dark .mejs-container .mejs-controls .mejs-playpause-button button:hover {
+	background:#2a2a2a; /* IE Fall-Back */
+}
+
+body .progression-skin.progression-minimal-dark .mejs-container .mejs-inner .mejs-controls .mejs-fullscreen-button,
+body .progression-skin.progression-minimal-dark .mejs-container .mejs-controls .mejs-playlist button {
+	border-left:1px solid #202020;
+}
+
+body .progression-skin.progression-minimal-dark .mejs-container .mejs-controls .mejs-volume-button {
+	border-left:1px solid #202020;
+}
+
+.progression-skin.progression-minimal-dark .wp-playlist.wp-audio-playlist .wp-playlist-next, .progression-skin.progression-minimal-dark  .wp-playlist.wp-audio-playlist .wp-playlist-prev,
+body .progression-skin.progression-minimal-dark .mejs-container .mejs-controls .mejs-playpause-button button {
+	border-right:1px solid #202020;
+}
+
+body .progression-skin.progression-minimal-dark .wp-playlist-tracks {
+	border-left:1px solid #202020;
+	border-right:1px solid #202020;
+	border-bottom:1px solid #202020;
+	background:#202020;
+}
+
+body .progression-skin.progression-minimal-dark  .wp-playlist-item {
+	border-color:#202020;
+}
+
+
+body .progression-skin.progression-minimal-dark .wp-playlist-item.wp-playlist-playing, body .progression-skin.progression-minimal-dark .wp-playlist-item.wp-playlist-playing:hover {
+	color:#ffffff;
+	background:#000000;
+	background: rgba(0, 0, 0, 0.35);
+}
+
+body .progression-skin.progression-minimal-dark .wp-playlist-item.wp-playlist-playing a, body .progression-skin.progression-minimal-dark .wp-playlist-item.wp-playlist-playing a:hover {
+	color:#ffffff;
+}
+
+body .progression-skin.progression-minimal-dark  .wp-playlist-item {
+	color: #999999;  background-color: rgba(250, 250, 250, 0.1);
+}
+
+body .progression-skin.progression-minimal-dark  .wp-playlist-item a, body .progression-skin.progression-minimal-dark  .wp-playlist-item .wp-playlist-item-length {
+	color: #999999;
+}
+
+body .progression-skin.progression-minimal-dark  .wp-playlist-item:hover {
+	background-color: #000000;
+	background-color: rgba(250, 250, 250, 0.15);
+}
+
+/* Timer */
+body .progression-skin.progression-minimal-dark .mejs-inner .mejs-time .mejs-currenttime, .progression-skin.progression-minimal-dark .mejs-inner .mejs-time  .mejs-duration {
+	color:#ffffff;
+}
+
+
+body .progression-skin.progression-minimal-dark .mejs-container .mejs-inner .mejs-controls .mejs-time-rail span.mejs-time-total {
+	background:#5c5c5c; /* IE Fall-Back */
+	-webkit-box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0);
+	box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0);
+}
+
+body .progression-skin.progression-minimal-dark .mejs-container .mejs-inner .mejs-controls .mejs-time-rail span.mejs-time-loaded { 
+	-webkit-box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0);
+	box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0);
+	background:#4c4c4c; /* IE Fall-Back */
+}
+
+body .progression-skin.progression-minimal-dark .mejs-container .mejs-inner .mejs-controls .mejs-time-rail span.mejs-time-current {
+	-webkit-box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0);
+	box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0);
+	background:#c2c2c2; /* IE Fall-Back */
+}
+
+body .progression-skin.progression-minimal-dark .mejs-controls .mejs-time-rail .mejs-time-handle  {
+	border:none;
+	width: 2px;
+	height: 2px;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	top:-1px;
+	left:-6px;
+	-webkit-box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0);
+	box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0);
+	border:5px solid #ededed;
+	background: #ededed;	
+}
+
+
+body .progression-skin.progression-minimal-dark .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-total {
+	background:#5c5c5c; /* IE Fall-Back */
+	-webkit-box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0);
+	box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0);
+}
+
+body .progression-skin.progression-minimal-dark .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current {
+	background:#c2c2c2; /* IE Fall-Back */
+	-webkit-box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0);
+	box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0);
+}
+
+body .progression-skin.progression-minimal-dark .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-handle {
+	width: 4px;
+	height:4px;
+	margin-left:-3px;
+	top:10px;
+	background: #ededed;	
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	cursor: pointer;
+	-webkit-box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0);
+	box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0);
+	border:3px solid #ededed;
+	text-align: center;
+}

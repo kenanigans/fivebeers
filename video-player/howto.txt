@@ -1,0 +1,79 @@
+Shortcode
+
+Audio Player
+============
+
+[audio mp3="http://domain.com/filename.mp3"]
+
+Video Player
+============
+
+[video mp4="http://domain.com/filename.mp4"]
+
+Video Player with Poster Image
+==============================
+
+[video poster="http://domain.com/thumbnail.jpg" mp4="http://domain.com/filename.mp4"]
+
+Adjusting Video Player Width 
+============================
+
+[video mp4="http://domain.com/filename.mp4" width="1024"]
+
+Turning on Autoplay
+==================
+
+[video autoplay="true"]
+
+Adding Additional Video File types
+==================================
+
+[video ogg="http://domain.com/filename.ogg"]
+
+[video webm="http://domain.com/filename.webm"]
+
+Video Not Playing? Setup MIME Types on your web server.
+======================================================
+
+AddType video/ogg .ogv
+AddType video/mp4 .mp4
+AddType video/webm .webm
+
+Audio Playlist
+==============
+
+Adding a playlist involves using the add media, from there you can select 
+create a playlist, and start adding items.
+
+Click Insert Playlist when ready.
+
+Note: You can select multiple items by holding down the alt key while
+selecting.
+
+Example Playlist
+================
+
+[playlist ids="41,40,9"]
+
+Player Sizes
+============
+
+Adjust player widths can be done using the content_width
+
+if ( ! isset( $content_width ) )
+		$content_width = 600;
+
+
+Hardcoding the Shortcode Example:
+=================================
+
+	$attr = array(
+		'mp4'     => 'http://noshrimp.com/snl.mp4',
+		'poster'  => 'http://noshrimp.com/snl.jpg',
+		'autoplay' => false,
+		'width'   => '1280',
+		'height'  => '720'
+	);
+
+	echo wp_video_shortcode( $attr ); 
+

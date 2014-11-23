@@ -1,8 +1,50 @@
 <?php
 
-function load_parent_style() {
-	wp_enqueue_style('style', get_template_directory_uri() . '/style.css');
-}
+/**
+ * Custom Scripts our theme uses
+ *
+*/
+include(get_stylesheet_directory() . '/inc/scripts.php');
 
-add_action('wp_enqueue_scripts', 'load_parent_style');
+/**
+ * Custom Tag list by Letter functions
+ *
+*/
+include(get_stylesheet_directory() . '/inc/taglist.php');
+
+/**
+ * AJAX Alphabet Functions
+ *
+*/
+include(get_stylesheet_directory() . '/inc/alphabet.php');
+
+/**
+ * Ajax Dropdown Archive Functions
+ *
+*/
+include(get_stylesheet_directory() . '/inc/archives.php');
+
+/**
+ * Unlimited Sidebar Functions
+ *
+*/
+include(get_stylesheet_directory() . '/inc/sidebars.php');
+
+/**
+ * Lightbox Functions
+ *
+*/
+include(get_stylesheet_directory() . '/inc/lightbox.php');
+
+/**
+ * Ajax Live Search Functions
+ *
+*/
+include(get_stylesheet_directory() . '/inc/livesearch.php');
+
+/**
+ * Custom Video and Audio Skin
+ *
+*/
+include(get_stylesheet_directory() . '/video-player/video-player.php');
 

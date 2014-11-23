@@ -3,8 +3,200 @@ Theme Name: Five Beers
 Theme URI: http://github.com/chrismccoy/adaptive
 Author: Chris McCoy
 Author URI: http://github.com/chrismccoy
-Description: Five Beers is a child theme for TwentyFifteen the theme being shipped with WordPress 4.1
+Description: Five Beers is a child theme for TwentyFifteen
 Version: 1.0
 Template: twentyfifteen
 */
 
+.ias_loader {
+	text-align:center;
+	margin: 5px 0;
+}
+
+.pagination {
+	font-size: 18px;
+}
+
+.pagination .alphabet {
+    line-height: 3.2em;
+    padding: 7px;
+    font-weight:bold;
+}
+
+.pagination .alphabet.current {
+	font-weight:normal;
+}
+
+#azload {
+	display:block;
+}
+
+select {
+	width:300px;
+}
+
+.entry-content a {
+    border-bottom: 1px solid #fff;
+}
+
+.entry-content a:hover, .entry-content a:focus {
+    border-bottom:1px solid #fff;
+}
+
+.strip_gallery {}
+
+.thumbnail {
+    float: left;
+    position: relative;
+    margin: 0 20px 20px 0;
+    padding: 1px;
+    display: inline;
+    max-width: 120px;
+    zoom: 1;
+}
+
+.thumbnail img {
+    float: left;
+    max-width: 120px;
+    max-height: 160px;
+    border: 1px solid black;
+}
+
+.thumbnail:last-child {
+    margin-right: 0 !important;
+}
+
+.tag-index {
+	display: block;
+	margin-bottom: 20px;
+	width: 100%;
+}
+
+.tag-index:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; } .tag-index { display: inline-block; } /* Hide from IE Mac \*/ .tag-index { display: block; } /* End hide from IE Mac */
+
+.tag-index ul {
+	width: 100%;
+	float: left;
+	margin: 0 10px 20px 10px !important;
+
+	list-style: none;
+}
+
+.tag-index h4 {
+	margin: 20px 0 0 0 !important;
+
+	padding: 5px 0 !important;
+	border-top: 4px solid rgba(0,0,0,0.7);
+	font-weight: bold;
+}
+
+.tag-index h4:first-child {
+	margin-top: 0 !important;
+}
+
+.tag-index li.tag {
+	list-style: none;
+	width: 100%;
+	padding: 5px 0;
+	margin: 0 !important;
+	border-top: 1px solid rgba(0,0,0,0.15);
+	font-size: 13px;
+}
+
+.tag-index li.tag p {
+	margin: 0 !important;
+	padding: 0 !important;
+	display: inline-block;
+	width: 85%;
+	overflow: hidden;
+}
+
+.tag-index li.tag span {
+	float: right;
+	display: inline-block;
+	padding: 0 5px;
+	background: rgba(0,0,0,0.1);
+	color: #666;
+}
+
+#live-search {
+	width: 95%;
+	padding: 4px 20px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	margin-left: 35px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	outline: none;
+	border: 1px solid #ababab;
+	font-size: 4em;
+	line-height: 25px;
+	color: #ababab;
+	text-align: center;
+}
+
+#live-search:hover, #live-search:focus {
+	color: #3b3b3b;
+	border: 1px solid #36a2d2;
+	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25) inset, 0 1px 0 rgba(255, 255, 255, 1);
+	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25) inset, 0 1px 0 rgba(255, 255, 255, 1);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25) inset, 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+#live-search-text {
+	display: none;
+	text-align:center;
+	font-weight: normal;
+	padding-left:20px;
+}
+
+#live-search-results {
+	display: none;
+	width: 98%;
+	margin-top: 4px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	-webkit-box-shadow: rgba(0, 0, 0, .15) 0 1px 3px;
+	-moz-box-shadow: rgba(0,0,0,.15) 0 1px 3px;
+	box-shadow: rgba(0, 0, 0, .15) 0 1px 3px;
+	list-style: none;
+	padding: 0;
+}
+
+#live-search-results li {
+	padding: 8px;
+	cursor: pointer;
+	border-top: 1px solid #cdcdcd;
+	transition: background-color .3s ease-in-out;
+	-moz-transition: background-color .3s ease-in-out;
+	-webkit-transition: background-color .3s ease-in-out;
+	text-align: center;
+}
+
+#live-search-results li:hover,
+#live-search-results li.selected {
+	background-color: #F7F7F7;
+}
+
+#live-search-results li:first-child {
+	border-top: none;
+}
+
+#live-search-results li a {
+	transition: color .3s ease-in-out;
+	-moz-transition: color .3s ease-in-out;
+	-webkit-transition: color .3s ease-in-out;
+	color: #616161;
+	line-height: 1.2em;
+}
+
+#live-search-results li:hover a {
+	color: #3b3b3b;
+	text-decoration: none;
+}
+
+#live-search-string {
+	font-weight: bold;
+}
