@@ -11,6 +11,7 @@ Some of the Features Include:
 5. AJAX Infinite Scrolling with Proper Standards for SEO
 6. Minimal Lightbox for Images, Galleries, and Videos
 7. Custom Skin for the Video and Audio Player with Playlist Support
+8. Unlimited Sidebar Widget Area Creation
 
 Extras:
 
