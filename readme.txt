@@ -12,6 +12,7 @@ Some of the Features Include:
 6. Minimal Lightbox for Images, Galleries, and Videos
 7. Custom Skin for the Video and Audio Player with Playlist Support
 8. Unlimited Sidebar Widget Area Creation
+9. Right/Left Sidebar Option in Customizer
 
 Extras:
 
@@ -23,5 +24,10 @@ Also the plugin Video Thumbnails is supported.
 
 Theme Note:
 
-Currently This requires WordPress 4.1, as the TwentyFifteen Theme uses
+Currently This requires WordPress 4.1 Beta, as the TwentyFifteen Theme uses
 functions introduced into the 4.1 Core.
+
+Changelog:
+
+See changelog.txt
+

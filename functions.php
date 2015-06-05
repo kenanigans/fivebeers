@@ -43,6 +43,12 @@ include(get_stylesheet_directory() . '/inc/lightbox.php');
 include(get_stylesheet_directory() . '/inc/livesearch.php');
 
 /**
+ * Layout Option (left/right sidebar)
+ *
+*/
+include(get_stylesheet_directory() . '/inc/layout.php');
+
+/**
  * Custom Video and Audio Skin
  *
 */

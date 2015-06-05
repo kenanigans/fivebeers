@@ -3,9 +3,13 @@
 class Video_Player {
 
 	protected $version = '1.0.0';
-	protected $player_slug = 'progression';
+
+	protected $plugin_slug = 'progression';
+
 	protected static $instance = null;
-	protected $player_screen_hook_suffix = null;
+
+	protected $plugin_screen_hook_suffix = null;
+
 	protected $loaded_options = array();
 
 	private function __construct() {
@@ -30,10 +34,10 @@ class Video_Player {
 
 		if ( empty( $this->loaded_options )) {
 
-			$db_options = get_option( $this->player_slug );
+			$db_options = get_option( $this->plugin_slug );
 
 			if ( empty( $db_options ) ) {
-				update_option( $this->player_slug, $defaults );
+				update_option( $this->plugin_slug, $defaults );
 				$this->loaded_options = $defaults;
 			} else {
 				$this->loaded_options = wp_parse_args( $db_options, $defaults );
@@ -41,7 +45,6 @@ class Video_Player {
 
 		}
 
-		//add_action( 'after_setup_theme', array( $this, 'load_theme_textdomain' ) );
 		add_action( 'admin_menu', array( $this, 'add_admin_menu' ) );
 		add_action( 'admin_init', array( $this, 'settings_api_init'));
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_styles' ) );
@@ -58,53 +61,39 @@ class Video_Player {
 	}
 
 	public static function get_instance() {
-
 		if ( null == self::$instance ) {
 			self::$instance = new self;
 		}
-
 		return self::$instance;
 	}
 
 	protected function options( $key = false ){
-
 		if ( $key ) {
 			return $this->loaded_options[ $key ];
 		} else {
 			return $this->loaded_options;
 		}
-
-	}
-
-	public function load_theme_textdomain() {
-		load_theme_textdomain( $this->player_slug, false, get_stylesheet_directory() . '/lang/' );
 	}
 
 	public function enqueue_admin_styles() {
-
-		if ( get_current_screen()->id == $this->player_screen_hook_suffix ) {
-			wp_enqueue_style( $this->player_slug .'-admin-styles', get_stylesheet_directory_uri() . '/video-player/css/progression-admin.css', array( 'wp-color-picker'  ), $this->version );
+		if ( get_current_screen()->id == $this->plugin_screen_hook_suffix ) {
+			wp_enqueue_style( $this->plugin_slug .'-admin-styles', get_stylesheet_directory_uri() . '/video-player/css/progression-admin.css', array( 'wp-color-picker'  ), $this->version );
 		}
 	}
 
 	public function enqueue_admin_scripts() {
-
-		if ( get_current_screen()->id == $this->player_screen_hook_suffix ) {
-			wp_enqueue_script( $this->player_slug . '-admin-script', get_stylesheet_directory_uri() . '/video-player/js/progression-admin.js', array( 'jquery', 'wp-color-picker' ), $this->version );
+		if ( get_current_screen()->id == $this->plugin_screen_hook_suffix ) {
+			wp_enqueue_script( $this->plugin_slug . '-admin-script', get_stylesheet_directory_uri() . '/video-player/js/progression-admin.js', array( 'jquery', 'wp-color-picker' ), $this->version );
 		}
-
 		wp_enqueue_media();
-
 	}
 
 	public function enqueue_styles() {
-
 		wp_enqueue_style( 'wp-mediaelement' );
-		wp_enqueue_style( $this->player_slug, get_stylesheet_directory_uri() . '/video-player/assets/css/progression-player.css', array('wp-mediaelement'), $this->version );
+		wp_enqueue_style( $this->plugin_slug, get_stylesheet_directory_uri() . '/video-player/assets/css/progression-player.css', array('wp-mediaelement'), $this->version );
 	}
 
 	public function enqueue_scripts() {
-
 		wp_deregister_script( 'wp-mediaelement' );
 		wp_register_script( 'wp-mediaelement', get_stylesheet_directory_uri() . '/video-player/js/progression-mediaelement.js', array( 'mediaelement' ), false, true );
 
@@ -113,53 +102,49 @@ class Video_Player {
 		$options['features'] = array( 'playpause', 'current', 'progress', 'duration', 'volume', 'togglePlaylist', 'fullscreen' ); 
 
 		wp_localize_script( 'mediaelement', '_wpmejsProgressionSettings', $options);
-
 		wp_deregister_script( 'wp-playlist' );
 		wp_register_script( 'wp-playlist', get_stylesheet_directory_uri() . '/video-player/js/progression-playlist.js', array( 'wp-util', 'backbone', 'mediaelement' ), false, true );
 	}
 
 	public function add_admin_menu() {
-
-		$this->player_screen_hook_suffix = add_submenu_page(
+		$this->plugin_screen_hook_suffix = add_submenu_page(
 			'options-general.php',
-			__( 'Progression Player', $this->player_slug ),
-			__( 'Progression Player', $this->player_slug ),
+			__( 'Progression Player', $this->plugin_slug ),
+			__( 'Progression Player', $this->plugin_slug ),
 			'manage_options',
-			$this->player_slug,
-			array( $this, 'display_video_admin_page' )
+			$this->plugin_slug,
+			array( $this, 'display_plugin_admin_page' )
 		);
-
 	}
 
-	public function display_video_admin_page() {
+	public function display_plugin_admin_page() {
 		include_once( 'views/admin.php' );
 	}
 
 	public function settings_api_init() {
-
-		register_setting( $this->player_slug, $this->player_slug );
+		register_setting( $this->plugin_slug, $this->plugin_slug );
 
 	 	add_settings_section(
-	 		$this->player_slug . '_skin',
+	 		$this->plugin_slug . '_skin',
 			__( 'Player skin' ),
 			array( $this, 'settings_section_skin_cb' ),
 			'progression'
 		);
 
 	 	add_settings_field(
-	 		$this->player_slug . '_active_skin',
+	 		$this->plugin_slug . '_active_skin',
 			__( 'Selected player skin' ),
 			array( $this, 'settings_field_active_skin_cb' ),
 			'progression',
-			$this->player_slug . '_skin'
+			$this->plugin_slug . '_skin'
 		);
 
  	 	add_settings_field(
- 	 		$this->player_slug . '_custom_skin',
+ 	 		$this->plugin_slug . '_custom_skin',
  			__( 'Custom skin' ),
  			array( $this, 'settings_field_custom_skin_cb' ),
  			'progression',
- 			$this->player_slug . '_skin'
+ 			$this->plugin_slug . '_skin'
  		);
 
  	 	$color_zones = array(
@@ -172,11 +157,11 @@ class Video_Player {
 
  	 	foreach ( $color_zones as $key => $label ) {
  		 	add_settings_field(
- 		 		$this->player_slug . '_custom_skin_colors['. $key .']',
+ 		 		$this->plugin_slug . '_custom_skin_colors['. $key .']',
  				$label,
  				array( $this, 'settings_field_custom_skin_colors_cb' ),
  				'progression',
- 				$this->player_slug . '_skin',
+ 				$this->plugin_slug . '_skin',
  				array(
  					'name' => 'custom_skin_colors',
  					'key' => $key
@@ -185,75 +170,75 @@ class Video_Player {
  	 	}
 
  	 	add_settings_field(
- 	 		$this->player_slug . 'size',
+ 	 		$this->plugin_slug . 'size',
  			__( 'Size' ),
  			array( $this, 'settings_field_defaults_cb' ),
  			'progression',
- 			$this->player_slug . '_skin',
+ 			$this->plugin_slug . '_skin',
  			array(
  				'key' => 'size'
  			)
  		);
 
  	 	add_settings_section(
- 	 		$this->player_slug . '_defaults',
+ 	 		$this->plugin_slug . '_defaults',
  			__( 'Player options' ),
  			array( $this, 'settings_section_defaults_cb' ),
  			'progression'
  		);
 
  	 	add_settings_field(
- 	 		$this->player_slug . '_startvolume',
+ 	 		$this->plugin_slug . '_startvolume',
  			__( 'Start volume' ),
  			array( $this, 'settings_field_defaults_cb' ),
  			'progression',
- 			$this->player_slug . '_defaults',
+ 			$this->plugin_slug . '_defaults',
 			array(
 				'key' => 'startvolume'
 			)
  		);
 
 	 	add_settings_field(
-	 		$this->player_slug . '_controls',
+	 		$this->plugin_slug . '_controls',
 			__( 'Always show controls' ),
 			array( $this, 'settings_field_defaults_cb' ),
 			'progression',
-			$this->player_slug . '_defaults',
+			$this->plugin_slug . '_defaults',
 			array(
 				'key' => 'controls'
 			)
 		);
 
 	 	add_settings_section(
-	 		$this->player_slug . '_playlist',
+	 		$this->plugin_slug . '_playlist',
 			__( 'Playlist options' ),
 			array( $this, 'settings_section_playlist_cb' ),
 			'progression'
 		);
 
 	 	add_settings_field(
-	 		$this->player_slug . '_playlist',
+	 		$this->plugin_slug . '_playlist',
 			__( 'Show playlist' ),
 			array( $this, 'settings_field_defaults_cb' ),
 			'progression',
-			$this->player_slug . '_playlist',
+			$this->plugin_slug . '_playlist',
 			array(
 				'key' => 'playlist'
 			)
 		);
 
 		add_settings_field(
-	 		$this->player_slug . '_playlist_meta',
+	 		$this->plugin_slug . '_playlist_meta',
 			__( 'Show playlist meta information' ),
 			array( $this, 'settings_field_defaults_cb' ),
 			'progression',
-			$this->player_slug . '_playlist',
+			$this->plugin_slug . '_playlist',
 			array(
 				'key' => 'playlist_meta'
 			)
 		);
 
- 	 	register_setting( 'progression', $this->player_slug . '_startvolume' );
+ 	 	register_setting( 'progression', $this->plugin_slug . '_startvolume' );
 
 	}
 
@@ -262,7 +247,6 @@ class Video_Player {
 	}
 
 	function settings_field_active_skin_cb() {
-
 		$skins = array(
 			'default' 		=> __( 'Default Skin' ),
 			'default-dark' 	=> __( 'Dark Skin' ),
@@ -272,7 +256,7 @@ class Video_Player {
 		);
 
 		$active_skin = $this->options( 'active_skin' );
-		$option_name = $this->player_slug . '[active_skin]';
+		$option_name = $this->plugin_slug . '[active_skin]';
 		$html_option = '<option value="%s"%s>%s</option>';
 
 		$html = '';
@@ -284,20 +268,19 @@ class Video_Player {
 		$html .= '</select>';
 
 		echo $html;
-
 	}
 
 	function settings_field_custom_skin_cb() { ?>
-		<input type="hidden" value="false" name="<?php echo $this->player_slug ?>[custom_skin]">
-		<label><input name="<?php echo $this->player_slug ?>[custom_skin]" id="progression_custom_skin" type="checkbox" value="true" class="code" <?php echo checked( $this->options( 'custom_skin' ), 'true', false)?> /> <?php _e( 'Customize selected player skin' ); ?></label>
+		<input type="hidden" value="false" name="<?php echo $this->plugin_slug ?>[custom_skin]">
+		<label><input name="<?php echo $this->plugin_slug ?>[custom_skin]" id="progression_custom_skin" type="checkbox" value="true" class="code" <?php echo checked( $this->options( 'custom_skin' ), 'true', false)?> /> <?php _e( 'Customize selected player skin' ); ?></label>
 	<?php }
 
 	function settings_field_custom_skin_colors_cb( $args ) {
 		$options = $this->options();
 		$key = $args['key'];
-		$name = $this->player_slug . '[colors]['. $key .']';
+		$name = $this->plugin_slug . '[colors]['. $key .']';
 		$value = $options[ 'colors' ][ $key ];
-		$class = $this->player_slug . '-skincolor';
+		$class = $this->plugin_slug . '-skincolor';
 
 		echo "<input name='$name' value='$value' class='$class' />";
 	}
@@ -307,10 +290,9 @@ class Video_Player {
 	}
 
 	function settings_field_defaults_cb( $args ) {
-
 		$options = $this->options();
 		$key = $args['key'];
-		$name = $this->player_slug . '['. $key .']';
+		$name = $this->plugin_slug . '['. $key .']';
 		$value = $options[ $key ];
 
 		if ( 'startvolume' === $key ) {
@@ -332,7 +314,6 @@ class Video_Player {
 			<label><input name='<?php echo $name; ?>' type='radio' value='normal' <?php checked( $value, 'normal' ) ?> /> <span><?php _e( 'normal (default)' ); ?></span></label><br>
 			<label><input name='<?php echo $name; ?>' type='radio' value='small' <?php checked( $value, 'small' ) ?> /> <span><?php _e( 'small' ); ?></span></label>
 		<?php }
-
 	}
 
 	function settings_section_playlist_cb() {
@@ -340,7 +321,6 @@ class Video_Player {
 	}
 
 	public function modify_shortcode_output( $html ) {
-
 		if ( $this->options( 'size' ) === 'small') {
 			$html = '<div class="pro-small-player">' . $html . '</div>';
 		}
@@ -355,12 +335,10 @@ class Video_Player {
 		}
 
 		$html = '<div class="'. $class .'">' . $html . '</div>';
-
 		return $html;
 	}
 
 	public function custom_skin_css() {
-
 		global $content_width;
 
 		$options = $this->options();
@@ -378,11 +356,8 @@ class Video_Player {
 		$html .= sprintf( '.progression-skin  { max-width: %s !important }', $content_width . 'px' );
 
 		if ( !empty( $colors ) ) {
-
 			foreach ( $colors as $key => $color ) {
-
 				if ( empty( $color ) ) continue;
-
 				if ( 'bg' === $key ) {
 					$html .= sprintf( 'body .progression-skin.progression-custom .mejs-container .mejs-controls, .progression-skin.progression-custom .wp-playlist .wp-playlist-next, .progression-skin.progression-custom  .wp-playlist .wp-playlist-prev{ background: %s }', $color );
 					$html .= sprintf( 'body .progression-skin.progression-custom .mejs-container .mejs-controls .mejs-playlist.progression-selected button,
@@ -410,12 +385,10 @@ body .progression-skin.progression-custom .mejs-inner .mejs-controls button:hove
 				}
 
 				if ( 'slider' === $key ) {
-					$html .= sprintf( 'body .progression-skin.progression-custom .mejs-container .mejs-inner .mejs-controls .mejs-time-rail span.mejs-time-total, body .progression-skin.progression-custom .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-total { background: %s }', $color );
+					$html .= sprintf( 'body .progression-skin.progression-custom .mejs-container .mejs-inner .mejs-controls .mejs-time-rail .mejs-time-total, body .progression-skin.progression-custom .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-total { background: %s }', $color );
 					$html .= sprintf( 'body .progression-skin.progression-custom .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current, body .progression-skin.progression-custom .mejs-container .mejs-inner .mejs-controls .mejs-time-rail span.mejs-time-current { background: %s }', $this->brightness( $color, 30 ) );
 				}
-
 			}
-
 		}
 
 		if ( ! empty( $html )) {
@@ -424,9 +397,7 @@ body .progression-skin.progression-custom .mejs-inner .mejs-controls button:hove
 	}
 
 	private function brightness( $hex, $diff ){
-
 		$rgb = str_split( trim( $hex, '# ' ), 2 );
-
 			foreach ( $rgb as &$hex ) {
 				$dec = hexdec( $hex );
 				if ( $diff >= 0 ) {
@@ -443,16 +414,15 @@ body .progression-skin.progression-custom .mejs-inner .mejs-controls button:hove
 	}
 
 	function wp_playlist_scripts() {
-		wp_enqueue_script( $this->player_slug . '-playlist' );
+		wp_enqueue_script( $this->plugin_slug . '-playlist' );
 	}
 
 	function wp_playlist_shortcode( $output, $attr ) {
 		global $content_width;
-		$post = get_post();
 
+		$post = get_post();
 		static $instance = 0;
 		$instance++;
-
 
 		if ( isset( $attr['orderby'] ) ) {
 			$attr['orderby'] = sanitize_sql_orderby( $attr['orderby'] );
@@ -517,13 +487,10 @@ body .progression-skin.progression-custom .mejs-inner .mejs-controls button:hove
 		}
 
 		$outer = 22; 
-
 		$default_width = 640;
 		$default_height = 360;
-
 		$theme_width = empty( $content_width ) ? $default_width : ( $content_width - $outer );
 		$theme_height = empty( $content_width ) ? $default_height : round( ( $default_height * $theme_width ) / $default_width );
-
 		$data = compact( 'type' );
 
 		foreach ( array( 'tracklist', 'tracknumbers', 'images', 'artists' ) as $key ) {
@@ -626,8 +593,6 @@ body .progression-skin.progression-custom .mejs-inner .mejs-controls button:hove
 		<?php
 		return apply_filters( 'wp_playlist_shortcode', ob_get_clean() );
 	}
-
 }
 
 Video_Player::get_instance();
-

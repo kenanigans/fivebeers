@@ -38,3 +38,12 @@ function load_fivebeers_scripts() {
 
 add_action('wp_enqueue_scripts', 'load_fivebeers_scripts');
 
+/**
+ * Add scroll to top
+ *
+ */
+function twentyfifteen_back_to_top() {
+        echo '<a class="totop" href="#"></a>';
+}
+
+add_action( 'wp_footer', 'twentyfifteen_back_to_top' );

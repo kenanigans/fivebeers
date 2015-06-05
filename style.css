@@ -4,7 +4,7 @@ Theme URI: http://github.com/chrismccoy/adaptive
 Author: Chris McCoy
 Author URI: http://github.com/chrismccoy
 Description: Five Beers is a child theme for TwentyFifteen
-Version: 1.0
+Version: 1.1
 Template: twentyfifteen
 */
 
@@ -200,3 +200,119 @@ select {
 #live-search-string {
 	font-weight: bold;
 }
+
+div#disqus_thread {
+	padding: 3.3333% 7.6923%;
+	background-color: white;
+	margin: 3% 0;
+	box-shadow: 0 0 1px rgba(0,0,0,0.15);
+}
+
+@media screen and (min-width: 38.75em) {
+	div#disqus_thread {
+		padding: 3.3333% 7.6923%;
+		margin: 3.3333% 7.6923%;
+	}
+}
+
+@media screen and (min-width: 59.6875em) {
+	div#disqus_thread {
+		padding: 3.3333% 8.3333%;
+		margin: 3.3333% 8.3333%;
+	}
+}
+
+
+.strip_gallery {}
+
+.thumbnail {
+    float: left;
+    position: relative;
+    margin: 0 20px 20px 0;
+    padding: 1px;
+    display: inline;
+    max-width: 120px;
+    zoom: 1;
+}
+
+.thumbnail img {
+    float: left;
+    max-width: 120px;
+    max-height: 160px;
+    border: 1px solid black;
+}
+
+.thumbnail:last-child {
+    margin-right: 0 !important;
+}
+
+.entry-content a {
+    border-bottom: 1px solid #fff !important;
+}
+
+.entry-content a:hover, .entry-content a:focus {
+    border-bottom:1px solid #fff !important;
+}
+
+@media screen and (min-width: 59.6875em) {
+
+    .right-sidebar .sidebar {
+        float: right;
+        margin-right: 0;
+        overflow-y: hidden;
+        position: relative !important;
+    }
+
+    .right-sidebar .site-content {
+        margin-left: 0;
+    }
+
+    body.right-sidebar:before {
+        right: 0;
+        left: auto;
+    }
+}
+
+.right-sidebar .site-footer {
+    margin: 0 5.9923% 2%;
+}
+
+.left-sidebar .site-footer {
+    float: left;
+    margin: 0 0 2% 35.2941%;
+}
+
+.sidebar {
+    overflow-y: hidden;
+    position: relative;
+}
+
+.totop:before {
+    font-family: 'Genericons';
+    content: '\f432';
+    font-size: 50px;
+}
+
+.totop {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    display: none;
+    text-decoration: none;
+    outline: none !important;
+}
+
+
+/* Desktop Small 955px */
+@media screen and (min-width: 59.6875em) {
+}
+/* Desktop Medium 1100px */
+@media screen and (min-width: 68.75em) {
+}
+/* Desktop Large 1240px */
+@media screen and (min-width: 77.5em) {
+}
+/* Desktop X-Large 1403px */
+@media screen and (min-width: 87.6875em) {
+}
+

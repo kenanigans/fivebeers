@@ -1,0 +1,12 @@
+Five Beers Child Theme Changelog
+
+2014-12-04 - Version 1.0
+	* Initial Release
+
+2015-06-05 - Version 1.1
+	* Feature: Left/Right Sidebar Option to Customizer
+	* Feature: Scroll to Top with Icon
+	* Fix: Disqus Comments bug with Twentyfifteen
+	* Update: Strip LightBox Javscript
+	* Update: Infinite Scroll Javascript
+	* Update: Video Player Media Element Skin

@@ -81,6 +81,9 @@
 				this.settings.success = this.bindResetPlayer;
 			}
 
+			/**
+			 * This is also our bridge to the outside world
+			 */
 			this.player = new MediaElementPlayer( this.playerNode.get(0), this.settings );
 		},
 
@@ -195,16 +198,20 @@
 }(jQuery, _, Backbone));
 
 (function($) {
+    // loop toggle
     MediaElementPlayer.prototype.buildtogglePlaylist = function(player, controls, layers, media) {
         var wpPlaylist = controls.closest('.wp-playlist'),
         	playlist = wpPlaylist.find('.wp-playlist-tracks'),
         	data = $.parseJSON( wpPlaylist.find('script').html() );
 
             if (playlist.length) {
+            	// create the playlist button
             	var playlistButton =  
 	            $('<div class="mejs-button mejs-playlist mejs-playlist-button"><button type="button" aria-controls="mep_0" title="Show/Hide Playlist" aria-label="Show/Hide Playlist"></button></div>' +
 	            '</div>')
+            	// append it to the toolbar
 	            .appendTo(controls)
+	            // add a click toggle event
 	            .click(function() {
 	            	playlist.toggle();
 	            	$(this).toggleClass('progression-selected');

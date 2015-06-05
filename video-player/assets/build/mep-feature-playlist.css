@@ -1,3 +1,9 @@
+/*
+    Document        : mep-feature-playlist.css
+    Author          : Andrew Berezovsky <andrew.berezovsky@gmail.com>
+    Original Author : Junaid Qadir Baloch <shekhanzai.baloch@gmail.com>
+*/
+
 /* Start: Show/Hide Playlist*/
 .mejs-controls .mejs-show-playlist button {
   background: transparent url(controls-playlist.png) no-repeat;
