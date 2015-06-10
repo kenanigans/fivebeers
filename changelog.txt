@@ -10,3 +10,6 @@ Five Beers Child Theme Changelog
 	* Update: Strip LightBox Javscript
 	* Update: Infinite Scroll Javascript
 	* Update: Video Player Media Element Skin
+
+2015-06-05 - Version 1.2
+	* Feature: Footer Widget Areas

@@ -7,6 +7,12 @@
 include(get_stylesheet_directory() . '/inc/scripts.php');
 
 /**
+ * Footer Widgets
+ *
+*/
+include(get_stylesheet_directory() . '/inc/footer-widgets.php');
+
+/**
  * Custom Tag list by Letter functions
  *
 */
@@ -53,4 +59,10 @@ include(get_stylesheet_directory() . '/inc/layout.php');
  *
 */
 include(get_stylesheet_directory() . '/video-player/video-player.php');
+
+/**
+ * GitHub Widgets and Shortcodes
+ *
+*/
+include(get_stylesheet_directory() . '/inc/github.php');
 

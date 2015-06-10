@@ -43,29 +43,6 @@ select {
     border-bottom:1px solid #fff;
 }
 
-.strip_gallery {}
-
-.thumbnail {
-    float: left;
-    position: relative;
-    margin: 0 20px 20px 0;
-    padding: 1px;
-    display: inline;
-    max-width: 120px;
-    zoom: 1;
-}
-
-.thumbnail img {
-    float: left;
-    max-width: 120px;
-    max-height: 160px;
-    border: 1px solid black;
-}
-
-.thumbnail:last-child {
-    margin-right: 0 !important;
-}
-
 .tag-index {
 	display: block;
 	margin-bottom: 20px;
@@ -222,7 +199,6 @@ div#disqus_thread {
 	}
 }
 
-
 .strip_gallery {}
 
 .thumbnail {
@@ -285,6 +261,56 @@ div#disqus_thread {
 .sidebar {
     overflow-y: hidden;
     position: relative;
+}
+
+#footer-widgets {
+    width: 100%;
+    border-top: none;
+}
+
+#footer-widgets .widget li { 
+    list-style-type: none; 
+}
+
+@media screen and (min-width: 59.6875em) {
+	.widget-left {
+		float: left;
+		width: 42%;
+		clear: none;
+	}
+	.widget-right {
+		float: right;
+		width: 42%;
+		clear: none;
+	}
+	#footer-widgets .widget { padding:0; }
+	#footer-area {
+		display: table;
+		width: 100%;
+		padding:0 8.333% 8.333%;
+	}
+	.footer-inside {
+		display: table;
+		width: 100%;
+		padding: 8.333% 8.333%;
+
+	}
+	.footer-copywrite {
+		float: right;
+		max-width: 50%;
+		text-align: right;
+	}
+}
+
+@media screen and (max-width: 59.6875em) { 
+	.footer-inside {
+		margin: 5.9923% 5.9923% ;
+		padding: 7.6923% 7.6923%;
+	}
+}
+
+#footer-widgets .widget a:hover {
+    color: rgba(190, 190, 190, 0.7) !important;
 }
 
 .totop:before {
