@@ -11,7 +11,7 @@
 	float: right;
 	width: 51px;
 	height: 37px; 
-	background-image: url('images/drag.png');
+	background-image: url('../images/drag.png');
 	background-position: 19px 14px;
 	background-repeat: no-repeat; 
 	display: block;

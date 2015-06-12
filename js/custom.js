@@ -18,18 +18,20 @@ jQuery(document).ready(function($) {
         return false;
     });
 
-    // ajax infinite scrolling
+    // Infinite Scrolling
 
-    var ias = $.ias({
-        container: '#main',
-        item: '.post',
-        pagination: '.navigation',
-        next: '.next.page-numbers'
-    });
+   if ($.ias) {
+        var ias = $.ias({
+            container: '#main',
+            item: '.post',
+            pagination: '.navigation',
+            next: '.next.page-numbers'
+        });
 
-    ias.extension(new IASSpinnerExtension());
-    ias.extension(new IASHistoryExtension());
-    ias.extension(new IASPagingExtension());
+        ias.extension(new IASSpinnerExtension());
+        ias.extension(new IASHistoryExtension());
+        ias.extension(new IASPagingExtension());
+    }
 
     // alphabet ajax post loading
 
@@ -56,8 +58,9 @@ jQuery(document).ready(function($) {
             },
             success: function(data) {
 		// remove infinite on alphabet load
-		$.ias().unbind();
-
+		if ($.ias) {
+			$.ias().unbind();
+		}
                 $('#main').empty().html(data);
             }
         });
@@ -136,8 +139,9 @@ jQuery(document).ready(function($) {
 
             success: function(data) {
                 // remove infinite scrolling from live search results
-                $.ias().unbind();
-
+		if ($.ias) {
+			$.ias().unbind();
+		}
                 $('#content').empty().html(data);
             }
 

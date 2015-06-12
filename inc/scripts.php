@@ -22,17 +22,20 @@ function load_fivebeers_scripts() {
 	wp_enqueue_script('strip_js', get_stylesheet_directory_uri() . '/js/strip.js', array( 'jquery' ), '1.0', true);
 
 	// ajax infinite scroll
-	wp_enqueue_script('jquery_ias', get_stylesheet_directory_uri() . '/js/ias.js', array('jquery'));
-
-        $jqvars = array(
-                        'ajaxurl' => admin_url( 'admin-ajax.php' ),
-			'loading' => get_stylesheet_directory_uri() . '/images/loading.gif',
-                        'ajaxnonce' => wp_create_nonce( 'live-search' ),
-                        'custom_nonce' => wp_create_nonce( 'nonce-ajax-dropdown' )
-        );
+	if ( 'infinite' == get_theme_mod( 'twentyfifteen_pagination' ) ) {
+		wp_enqueue_script('jquery_ias', get_stylesheet_directory_uri() . '/js/ias.js', array('jquery'));
+	}
 
 	// our custom jQuery code for various site functions
 	wp_enqueue_script('custom_js', get_stylesheet_directory_uri() . '/js/custom.js', array('jquery'));
+
+        $jqvars = array(
+                'ajaxurl' => admin_url( 'admin-ajax.php' ),
+		'loading' => get_stylesheet_directory_uri() . '/images/loading.gif',
+                'ajaxnonce' => wp_create_nonce( 'live-search' ),
+                'custom_nonce' => wp_create_nonce( 'nonce-ajax-dropdown' )
+        );
+
         wp_localize_script('custom_js', 'myajax', $jqvars);
 }
 

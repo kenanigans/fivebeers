@@ -20,6 +20,20 @@ function twentyfifteen_sidebar_theme_customizer( $wp_customize ) {
             	'description' => 'Change the layout of your site.',
         ) );
 
+	$wp_customize->add_setting( 'twentyfifteen_pagination', array(
+		'default'	        => 'infinite',
+	) );
+
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'twentyfifteen_pagination', array(
+		'label'    => __( 'Post Pagination', 'twentyfifteen' ),
+		'section'  => 'twentyfifteen_layout_section',
+		'settings' => 'twentyfifteen_pagination',
+		'type'     => 'radio',
+		'choices'  => array(
+			'infinite' => 'Infinite Scrolling',
+			'default' => 'Default Pagination',
+			),
+	) ) );
 
 	$wp_customize->add_setting(
 		'twentyfifteen_layout_settings[layout_setting]',
