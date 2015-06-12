@@ -26,7 +26,7 @@ Also the plugin Video Thumbnails is supported.
 
 Theme Note:
 
-Currently This requires WordPress 4.1 Beta, as the TwentyFifteen Theme uses
+Currently This requires WordPress 4.1, as the TwentyFifteen Theme uses
 functions introduced into the 4.1 Core.
 
 Changelog:
