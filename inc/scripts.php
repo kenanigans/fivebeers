@@ -21,6 +21,11 @@ function load_fivebeers_scripts() {
 	wp_enqueue_style( 'strip_css', get_stylesheet_directory_uri() . '/css/strip.css');
 	wp_enqueue_script('strip_js', get_stylesheet_directory_uri() . '/js/strip.js', array( 'jquery' ), '1.0', true);
 
+	// table of contents
+	if(is_single() ) {
+		wp_enqueue_script('toc_js', get_stylesheet_directory_uri() . '/js/toc.js', array( 'jquery' ), '1.0', true);
+	}
+
 	// ajax infinite scroll
 	if ( 'infinite' == get_theme_mod( 'twentyfifteen_pagination' ) ) {
 		wp_enqueue_script('jquery_ias', get_stylesheet_directory_uri() . '/js/ias.js', array('jquery'));
