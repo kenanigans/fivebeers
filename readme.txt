@@ -15,6 +15,7 @@ Some of the Features Include:
 9.  Right/Left Sidebar Option in Customizer
 10. Infinite Scrolling/Default Pagination Option in Customizer
 11. Two Footer Widget Areas
+12. Table of Content Rendering per Post
 
 Extras:
 
